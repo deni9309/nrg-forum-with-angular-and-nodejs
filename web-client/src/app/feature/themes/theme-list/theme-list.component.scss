@@ -1,0 +1,52 @@
+.themes-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+/* search form */
+form.filter-form {
+    margin-top: 1em;
+    width: 100%;
+}
+
+p {
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+
+}
+
+.filter-form input {
+    padding: 0.3em;
+    width: 100%;
+}
+
+form i {
+    border: 1px solid rgb(214, 214, 214);
+    border-right: none;
+    padding: 0.55em;
+    border-top-left-radius: 0.3em;
+    border-bottom-left-radius: 0.3em;
+    background-color: #e9ecef;
+}
+
+.themes-wrapper a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.themes-wrapper span {
+    font-weight: bold;
+}
+
+.themes-wrapper h2,
+p {
+    padding: 0.3em 0 0.2em;
+    margin: 0;
+}
+
+.theme-title {
+    padding: 0;
+}

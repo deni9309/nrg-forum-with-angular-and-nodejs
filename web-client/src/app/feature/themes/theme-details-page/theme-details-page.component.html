@@ -1,0 +1,65 @@
+<!-- theme details  -->
+<div *ngIf="theme">
+    <div *ngIf="!!theme; else loadingIndicator"
+         class="theme-content">
+        
+        <div class="theme-title">
+            <div class="theme-name-wrapper">
+                <div class="theme-name">
+                    <h2>{{theme.themeName}}</h2>
+                    <p>Date: <time>{{theme.created_at | date:'dd MMM yyyy, hh:mm a'}}</time></p>
+                </div>
+
+                <div class="subscribers">
+                    <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
+                    <ng-container *ngIf="(isLoggedIn$ |async)">
+                        <button *ngIf="canSubscribe"
+                                class="subscribe">Subscribe</button>
+                        <button *ngIf="!canSubscribe"
+                                class="unsubscribe">Unsubscribe</button>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+        <article class="comment"
+                 *ngFor="let comment of theme.posts">
+            <header class="header">
+                <p><span>{{comment.userId.username}}</span> posted on
+                    <time>{{comment.created_at | date:'dd MMM yyyy, hh:mm a'}}</time>
+                </p>
+            </header>
+            <div class="comment-main">
+                <div class="userdetails"><img
+                         src="{{comment.userId.profilePicture ? comment.userId.profilePicture : '/assets/profile.png'}}"
+                         alt="{{comment.userId.username}}"></div>
+                <div class="post-content">
+                    <p>{{comment.text}}</p>
+                </div>
+            </div>
+            <div class="footer">
+                <i *ngIf="(isLoggedIn$ |async) && canLike(comment)"
+                   class="fas fa-thumbs-up"></i>
+                <i *ngIf="(isLoggedIn$ |async) && !canLike(comment)"
+                   class="fas fa-thumbs-down"></i>
+                <p><span>{{comment.likes.length}}</span> likes</p>
+            </div>
+        </article>
+
+        <section *ngIf="(isLoggedIn$ |async)"
+             class="answer-comment">
+            <p>Write comment as: <span>{{currentUser.username}}</span></p>
+            <div class="answer">
+                <form>
+                    <textarea name="postText"
+                              id="comment"
+                              cols="30"
+                              rows="10"></textarea>
+                    <button>Post</button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+</div>
+<ng-template #loadingIndicator>Loading ...</ng-template>

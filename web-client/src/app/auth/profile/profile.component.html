@@ -1,0 +1,92 @@
+<div *ngIf="profileDetails" class="profile" id="profile"><img src="{{profileDetails.profilePicture 
+    ? profileDetails.profilePicture 
+    : 'assets/profile.png'}}"
+         alt="{{profileDetails.username}}">
+    <h3>User Info:</h3>
+
+    <ng-container *ngIf="!isEditMode && profileDetails">
+        <form class="disabled">
+            <div class="input-group">
+                <p>Username: </p><input value="{{profileDetails.username}}"
+                       disabled />
+            </div>
+            <div class="input-group">
+                <p>Email: </p><input value="{{profileDetails.email}}"
+                       disabled />
+            </div>
+            <div class="input-group">
+                <p>Phone: </p>
+                <input value="{{profileDetails.tel}}"
+                       disabled />
+            </div>
+        </form>
+        <div class="button-group">
+            <button (click)="enterEditMode()">Edit</button>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="isEditMode">
+        <form #form="ngForm"
+              (ngSubmit)="saveProfileHandler(form)">
+            <div class="input-group">
+                <p>Username: </p>
+                <input [class.input-error]="username.touched && username.invalid"
+                       type="text"
+                       name="username"
+                       id="username"
+                       ngModel
+                       #username="ngModel"
+                       required
+                       minlength="5" />
+            </div>
+            <ng-container *ngIf="username.touched">
+                <p class="error"
+                   *ngIf="username.errors?.['required']">Username is required!</p>
+                <p class="error"
+                   *ngIf="username.errors?.['minlength']">Username must be at least 5
+                    characters long!
+                </p>
+            </ng-container>
+
+            <div class="input-group">
+                <p>Email: </p>
+                <input [class.input-error]="email.touched && email.invalid"
+                       type="email"
+                       name="email"
+                       id="email"
+                       ngModel
+                       #email="ngModel"
+                       required
+                       [appEmail]="validDomains" />
+            </div>
+            <ng-container *ngIf="email.touched">
+                <p class="error"
+                   *ngIf="email.errors?.['required']">Email is required!</p>
+                <p class="error"
+                   *ngIf="email.errors?.['emailValidator']">Email is not valid!</p>
+            </ng-container>
+
+            <div class="input-group">
+                <p>Phone: </p>
+                <input type="text"
+                       name="tel"
+                       id="tel"
+                       ngModel
+                       #tel="ngModel" />
+            </div>
+            <div class="input-group">
+                <p>Profile Picture: </p>
+                <input type="file"
+                       accept="image/png"
+                       id="profile-picture"
+                       (change)="ProfilePictureChangeHandler($event)" />
+            </div>
+            <div class="button-group">
+                <button class="red-button"
+                        (click)="toggleEditMode()">Cancel</button>
+                <button [disabled]="form.invalid"
+                        class="green-button">Save</button>
+            </div>
+        </form>
+    </ng-container>
+</div>

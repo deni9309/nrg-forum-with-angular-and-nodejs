@@ -1,0 +1,33 @@
+<header>
+    <div class="mini-navbar-wrap">
+        <div class="logo-wrap">
+            <p class="logo">NRG<span>forum</span></p>
+        </div>
+        <div class="mini-navbar"
+             *ngIf="!(isLoggedIn$ |async)">
+            <ul>
+                <li><a routerLink="/auth/login">Login</a></li>
+                <li><a routerLink="/auth/register">Register</a></li>
+            </ul>
+        </div>
+        <div class="mini-navbar"
+             *ngIf="(isLoggedIn$ |async)">
+            <ul>
+                <li><a routerLink="/auth/profile">{{(currentUser$ | async).username}}'s Profile</a></li>
+                <li><a href="javascript:void(0);"
+                       (click)="logoutHandler()">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    <nav>
+        <ul>
+            <li><a routerLink="/home">Home</a></li>
+            <li><a routerLink="/themes">Themes</a></li>
+            <li><a [routerLink]="['/themes', 'new']">New Theme</a></li>
+
+            <p *ngIf="!!message"
+               [ngClass]="{'error-message':isErrorMessage, 'success-message': !isErrorMessage}"
+               class="notification">{{message}}</p>
+        </ul>
+    </nav>
+</header>

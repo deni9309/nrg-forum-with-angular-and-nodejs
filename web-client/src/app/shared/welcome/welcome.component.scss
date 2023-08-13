@@ -1,0 +1,138 @@
+/* hero section*/
+
+.hero {
+    background-color: orange;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.hero .hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero .wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.5;
+}
+
+.hero .hero__title {
+    font-size: 2rem;
+    color: white;
+    margin: 0px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+}
+
+.hero__subtitle {
+    font-size: 1.5rem;
+    color: white;
+    margin: 0px;
+    line-height: 1.5;
+}
+
+
+.logo span {
+    font-size: inherit;
+    letter-spacing: .9rem;
+    font-weight: 300;
+}
+
+/* welcome component */
+
+.welcome {
+    padding: 2em;
+    border-radius: 4px;
+    font-size: 0.8em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, 0.622);
+}
+
+.welcome h3 {
+    background-color: rgba(255, 166, 0, 0.6);
+    margin: 1em;
+    padding: 1em;
+    border-radius: 2px;
+    width: 90%;
+}
+
+.welcome p {
+    padding: 1em;
+    padding-bottom: 1.8em;
+    border-bottom: 3px solid gainsboro;
+    font-style: normal;
+    width: 90%;
+}
+
+.welcome a {
+    color: white;
+    text-decoration: none;
+    background-color: orange;
+    border: none;
+    border-radius: 2px;
+    padding: 0.3em 1.2em;
+    margin: 1em;
+    margin-bottom: 0em;
+    display: flex;
+}
+
+.welcome a:hover {
+    background-color: #00040441;
+    cursor: pointer;
+}
+
+.welcome ul {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+    margin: 1em;
+}
+
+.welcome li * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+@media screen and (max-width: 800px) {
+    section.hero h3.hero__title {
+        font-size: 1.8rem;
+    }
+
+    section.hero h5.hero__subtitle {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+
+    div.welcome {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 1290px) {
+    div.welcome {
+        margin: 0;
+        margin-top: 2em;
+    }
+}

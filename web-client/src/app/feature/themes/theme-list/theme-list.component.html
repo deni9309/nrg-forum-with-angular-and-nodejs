@@ -1,0 +1,24 @@
+<div class="themes-wrapper">
+    <form class="filter-form">
+        <p>
+            <label for="search-term"><span><i class="fas fa-search" title="Start typing to filter the results"></i></span></label>
+            <input type="text"
+                   id="search-term"
+                   name="search-term"
+                   placeholder="Search for themes"
+                   title="Start typing to filter the results"
+                   [formControl]="searchControl" />
+        </p>
+    </form>
+
+    <div *ngIf="themeList">
+        <app-theme-list-item *ngFor="let theme of themeList"
+                             [theme]="theme">
+        </app-theme-list-item>
+
+        <div *ngIf="themeList.length === 0">{{localize('no-themes-message', l10n)}}</div>
+    </div>
+    <div *ngIf="!themeList">
+        Loading...
+    </div>
+</div>

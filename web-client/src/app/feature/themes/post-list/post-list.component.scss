@@ -1,0 +1,54 @@
+
+/* post aside  */
+
+aside {
+    width: 29%;
+    margin-top: 1em;
+    font-size: 0.8em;
+}
+
+.aside * {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    font-size: 1.5em;
+}
+
+.aside-theme {
+    margin: 1rem 0;
+    padding: 0.5rem 1em;
+}
+
+h3 {
+    border-radius: 2px;
+    font-size: 1.2rem;
+    background-color: rgba(245, 245, 245, 0.5);
+    padding: 0.5rem;
+}
+
+.aside-theme+.aside-theme {
+    border-top: dashed 1px teal;
+}
+
+.aside-theme p {
+    text-align: right;
+    padding: 1em;
+}
+
+.aside-theme a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.aside-theme a:hover h3{
+    color: orange;
+}
+
+p.time-span{
+    margin-top: .3em;
+    margin-bottom: .3em;
+    color: teal;
+}

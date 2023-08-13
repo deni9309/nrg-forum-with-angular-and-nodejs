@@ -1,0 +1,139 @@
+:host {
+    margin: auto;
+    display: flex;
+}
+
+/*login register forms  */
+
+form.login,
+form.register {
+    display: flex;
+    margin: 2em auto;
+    text-align: center;
+}
+
+.login fieldset,
+.register fieldset {
+    border-radius: 0.3em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.219);
+    border: 0;
+    padding: 0.8em 4em;
+    background-color: white;
+}
+
+.login h2,
+.register h2 {
+    padding-top: 0;
+    border-bottom: none;
+}
+
+.login p,
+.register p {
+    padding-bottom: 0;
+    padding-top: 1.5rem;
+}
+
+.login input,
+.register input {
+    flex: 0 1 100%;
+    padding: 0.3em;
+    border-left: 0.3em solid green;
+    border-top-right-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+}
+
+.login button,
+.register button {
+    color: white;
+    border: none;
+    padding: 0.6em 1.2em;
+    margin-top: 1.5rem;
+    width: 60%;
+    outline: none;
+}
+
+.login button:disabled,
+.register button:disabled {
+    color: whitesmoke;
+    background-color: lightgray;
+    cursor: not-allowed;
+}
+
+.login i,
+.register i {
+    border: 1px solid;
+    border-right: none;
+    padding: 0.55em;
+    border-top-left-radius: 0.3em;
+    border-bottom-left-radius: 0.3em;
+    background-color: #e9ecef;
+}
+
+.login a,
+.register a {
+    color: #007bff;
+}
+
+.login a:hover,
+.register a:hover {
+    cursor: pointer;
+}
+
+.register .tel {
+    padding-right: 0.8em;
+}
+
+.login .field,
+.register .field {
+    display: flex;
+    padding-bottom: 0;
+}
+
+p.text-center {
+    font-size: 0.9em;
+}
+
+/* errors  */
+
+p.error {
+    text-align: left;
+    border-radius: 0.3em;
+    color: red;
+    padding-top: 0;
+    margin-top: 0;
+    font-size: 0.8em;
+}
+
+.register .input-error,
+.login .input-error {
+    border-left-color: red;
+}
+
+@media screen and (max-width: 800px) {
+
+    form.login,
+    form.register#register {
+        margin-top: 2em;
+        margin-bottom: 3em;
+        font-size: 0.9em;
+        padding: 0em;
+    }
+
+    form.login#login fieldset,
+    form.register#register fieldset {
+        padding: 1em;
+    }
+
+    form.login p * {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+
+    form.login,
+    form.register#register {
+        margin-bottom: 1em;
+        font-size: 0.9em;
+    }
+}

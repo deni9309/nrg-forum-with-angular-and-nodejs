@@ -1,0 +1,27 @@
+<div class="theme-item-wrapper">
+    <div class="theme-item">
+        <a [routerLink]="['/themes', theme._id]">
+            <h2 title="{{theme.themeName}}"
+                *ngIf="theme.themeName.length > 25">{{(theme.themeName | slice:0:25) + '...'}}</h2>
+            <h2 title="{{theme.themeName}}"
+                *ngIf="theme.themeName.length <= 25">{{theme.themeName}}</h2>
+        </a>
+        <div class="columns">
+            <div>
+                <p>Date: <time>{{theme.created_at | date:'dd MMM yyyy, hh:mm a'}}</time></p>
+                <div>
+                    <p>Username: <span>{{theme.userId.username}}</span></p>
+                </div>
+            </div>
+            <div class="subscribers">
+                <button *ngIf="(isLoggedIn$ |async)"
+                        [class.subscribe]="(canSubscribe$ | async)"
+                        [class.unsubscribe]="!(canSubscribe$ | async)">
+                    {{(canSubscribe$ | async) ? 'Subscribe' : 'Unsubscribe'}}
+                </button>
+
+                <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
+            </div>
+        </div>
+    </div>
+</div>

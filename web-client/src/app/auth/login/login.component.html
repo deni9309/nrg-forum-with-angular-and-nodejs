@@ -1,0 +1,48 @@
+<form [formGroup]="form" id="login"
+      (ngSubmit)="loginHandler()"
+      class="login">
+
+    <fieldset>
+        <h2>Login Form</h2>
+        <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+
+        <p class="field">
+            <label for="email"><span><i class="fas fa-envelope"></i></span></label>
+            <input [class.input-error]="form.get('email')?.touched && form.get('email')?.invalid"
+                   type="text"
+                   name="email"
+                   id="email"
+                   placeholder="john.doe@gmail.com"
+                   formControlName="email" />
+        </p>
+        <ng-container *ngIf="form.get('email')?.touched">
+            <p class="error"
+               *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
+            <p class="error"
+               *ngIf="form.get('email')?.errors?.['emailValidator']">Email is not valid!</p>
+        </ng-container>
+
+        <p class="field">
+            <label for="password"><span><i class="fas fa-lock"></i></span></label>
+            <input [class.input-error]="form.get('password')?.touched && form.get('password')?.invalid"
+                   type="password"
+                   name="password"
+                   id="password"
+                   placeholder="******"
+                   formControlName="password" />
+        </p>
+        <ng-container *ngIf="form.get('password')?.touched">
+            <p class="error"
+               *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
+            <p class="error"
+               *ngIf="form.get('password')?.errors?.['minlength']">Password must be at least
+                {{form.get('password')?.errors?.['minlength'].requiredLength}} characters!
+            </p>
+        </ng-container>
+
+        <button [disabled]="form.invalid">Login</button>
+
+        <p class="text-center">Don't have an account yet? <a routerLink="/auth/register">Register</a></p>
+
+    </fieldset>
+</form>

@@ -1,0 +1,59 @@
+@import url('./assets/reset.scss');
+@import url('./assets/layout.scss');
+@import url('./assets/typography.scss');
+@import url('./assets/responsive.scss');
+
+html,
+* {
+    transition: all ease-in 0.2s;
+    font-family: 'Poiret One', cursive;
+    font-weight: bold;
+}
+
+body {
+    background-image: url('/assets/hero.jpg');
+    background-size: cover;
+}
+
+h2 {
+    text-align: center;
+    border-bottom: 1px dashed #999;
+}
+
+li {
+    list-style: none;
+}
+
+span {
+    font-weight: bold;
+}
+
+button {
+    background-color: #4ebced;
+    color: white;
+    border-radius: 2px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #1b4d0f78;
+}
+
+input,
+textarea,
+select {
+    border: 1px solid lightgray;
+    outline: 0;
+    border-radius: 4px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border: 1px solid #4ebced;
+    outline: 0;
+}
+
+img {
+    object-fit: cover;
+}

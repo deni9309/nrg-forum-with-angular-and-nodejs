@@ -1,0 +1,136 @@
+:host {
+    margin: auto;
+}
+
+/* new-theme */
+
+.new-theme-border {
+    min-width: 500px;
+    border-radius: 4px;
+    padding: 2em;
+    background-color: #ffffff;
+    border: 4px solid rgb(219, 219, 219);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    margin: 2em auto;
+    margin-bottom: 2em;
+}
+
+.new-theme-border .input {
+    margin-bottom: 1em;
+}
+
+.header-background {
+    background-color: #4ebced;
+    border: 1px solid #4ebced;
+    padding: 1.5em;
+    padding-bottom: 0;
+    margin-bottom: 1em;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
+.header-background span {
+    background-color: #fff;
+    padding: 0.5em;
+    margin-top: 1em;
+    margin-bottom: 0;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
+.new-theme-title,
+.new-theme-content {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+.new-theme-content {
+    min-height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.new-theme-content textarea {
+    width: 100%;
+    padding: 0.5em;
+    margin: 0;
+}
+
+.new-theme-content label {
+    margin-bottom: 0.3em;
+}
+
+.new-theme-title input {
+    display: flex;
+    width: 100%;
+    border-radius: 0.3em;
+    padding: 0.35em;
+}
+
+button+button {
+    margin-left: 1rem;
+}
+
+.new-theme-buttons {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.new-theme-buttons button {
+    border: none;
+    border-radius: 4px;
+    padding: 0.6em 1.2em;
+    margin-top: 1rem;
+}
+
+.new-theme-buttons button:disabled {
+    color: #e9ecef;
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+p.error {
+    text-align: left;
+    border-radius: 0.3em;
+    color: red;
+    padding-top: 0;
+    font-size: 0.8em;
+}
+
+.red {
+    color: red;
+}
+
+.input-error {
+    border-left-color: red;
+}
+
+@media screen and (max-width: 800px) {
+    .new-theme-border .header-background {
+        padding: inherit 0 0 0;
+    }
+
+    .new-theme-border .header-background span {
+        margin: inherit 0 0 0;
+    }
+
+    div.new-theme-border {
+        min-width: auto;
+        width: 330px;
+        font-size: 0.8em;
+    }
+
+    /*
+          div.container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+        }*/
+}
+
+@media screen and (max-width: 1024px) {}
