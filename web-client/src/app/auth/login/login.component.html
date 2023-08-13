@@ -1,10 +1,14 @@
-<form [formGroup]="form" id="login"
+<form [formGroup]="form"
+      id="login"
       (ngSubmit)="loginHandler()"
       class="login">
 
     <fieldset>
-        <h2>Login Form</h2>
-        <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+        <div class="header-background">
+            <span>Login</span>
+        </div>
+        <p *ngIf="errorMessage"
+           class="error">{{errorMessage}}</p>
 
         <p class="field">
             <label for="email"><span><i class="fas fa-envelope"></i></span></label>

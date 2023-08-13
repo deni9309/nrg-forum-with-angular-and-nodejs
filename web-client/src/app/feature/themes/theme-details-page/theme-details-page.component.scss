@@ -214,17 +214,19 @@
 
 @media screen and (max-width: 800px) {
     div.theme-content {
-        min-width: 90%;
+        min-width: 95%;
         margin: auto;
         margin-top: 1em;
+        padding: .5em;
     }
 
     div.theme-name p {
-        font-size: 0.9em;
+        font-size: 0.8rem;
     }
 
     div h2 {
-        font-size: 1.5em;
+        font-size: 1.3rem;
+        text-align: left;
     }
 
     article.comment {
@@ -232,9 +234,14 @@
         flex-direction: column;
     }
 
+    article.comment *{
+        padding: 0;
+    }
+
     article .comment-main {
         display: flex;
         flex-direction: column;
+        padding: 0;
     }
 
     article .comment-main img {
