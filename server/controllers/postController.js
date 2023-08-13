@@ -74,10 +74,18 @@ function like(req, res, next) {
     const { postId } = req.params;
     const { _id: userId } = req.user;
 
-    console.log('like')
-
     postModel.updateOne({ _id: postId }, { $addToSet: { likes: userId } }, { new: true })
-        .then(() => res.status(200).json({ message: 'Liked successful!' }))
+        .then(() => res.status(200).json({ message: 'Like is added successfully!' }))
+        .catch(next)
+}
+
+
+function dislike(req, res, next) {
+    const { postId } = req.params;
+    const { _id: userId } = req.user;
+
+    postModel.updateOne({ _id: postId }, { $pull: { likes: userId } }, { new: true })
+        .then(() => res.status(200).json({ message: 'Like has been removed!' }))
         .catch(next)
 }
 
@@ -88,4 +96,5 @@ module.exports = {
     editPost,
     deletePost,
     like,
+    dislike,
 }

@@ -3,24 +3,24 @@
     <div *ngIf="!!theme; else loadingIndicator"
          class="theme-content">
         
-        <div class="theme-title">
+        <article class="theme-title">
             <div class="theme-name-wrapper">
-                <div class="theme-name">
+                <header class="theme-name">
                     <h2>{{theme.themeName}}</h2>
                     <p>Date: <time>{{theme.created_at | date:'dd MMM yyyy, hh:mm a'}}</time></p>
-                </div>
+                </header>
 
                 <div class="subscribers">
                     <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
                     <ng-container *ngIf="(isLoggedIn$ |async)">
-                        <button *ngIf="canSubscribe"
+                        <button (click)="subscribe()" *ngIf="canSubscribe"
                                 class="subscribe">Subscribe</button>
-                        <button *ngIf="!canSubscribe"
+                        <button (click)="unsubscribe()" *ngIf="!canSubscribe"
                                 class="unsubscribe">Unsubscribe</button>
                     </ng-container>
                 </div>
             </div>
-        </div>
+        </article>
 
         <article class="comment"
                  *ngFor="let comment of theme.posts">

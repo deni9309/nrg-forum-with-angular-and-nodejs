@@ -9,8 +9,8 @@
     flex-direction: column;
     margin: 2em auto;
     width: auto;
-    max-width: 70%;
-    margin-bottom: 0;
+    max-width: 80%;
+    margin-bottom: 2em;
     padding: 2em;
     background-color: rgba(255, 255, 255, 0.622);
 }
@@ -22,18 +22,29 @@
     justify-content: space-around;
     align-items: center;
     padding: 1em;
-    border: 1px solid #999;
-    border-radius: 0.3em;
-    font-size: 0.8em;
+    border-radius: 2px;
     margin-top: 1em;
+    border: 1px solid gainsboro;
+    background-color: whitesmoke;
 }
 
-.theme-title {
-    padding: 0;
-}
-
-.theme-name {
+article header {
     width: 100%;
+}
+
+article header h2,
+article header p,
+.subscribers p,
+.subscribers button {
+    padding: 1em;
+}
+
+.subscribers p {
+    white-space: pre;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .columns {
@@ -43,25 +54,27 @@
 }
 
 .subscribers {
-    text-align: right;
-    flex-basis: 25%;
+    padding: 1em;
+    flex-basis: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .subscribers button {
-    padding: .1em;
+    padding: .5em .8em;
     border: none;
     border-radius: 2px;
     color: white;
     cursor: pointer;
-    width: 100%;
 }
 
 .subscribe {
-    background-color: green;
+    background-color: rgba(2, 157, 2, 0.803);
 }
 
 .unsubscribe {
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.83);
 }
 
 .theme-title {
@@ -85,7 +98,7 @@
 .comment {
     margin-top: 1em;
     border: 1px solid gainsboro;
-    border-radius: 4px;
+    border-radius: 2px;
     width: 100%;
     padding: 1em;
 }
@@ -93,9 +106,9 @@
 .comment header p {
     padding: 0.3em;
     text-align: center;
-    background-color: lightblue;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    background-color: rgba(0, 128, 128, 0.2);
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
     border-bottom: 5px solid orange;
     margin-right: 0;
 }
@@ -166,9 +179,14 @@
 /* answer-comment */
 
 .answer-comment {
-    width: 100%;
-    /* display: flex; */
     margin-top: 1em;
+}
+
+.answer-comment form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .answer-comment p {
@@ -178,12 +196,12 @@
 
 .answer-comment p span {
     color: rgb(0, 128, 182);
-    font-size: 1.2em;
+    font-size: 1rem;
 }
 
 .answer {
-    border: 1px solid;
-    border-radius: 0.3em;
+    border: 1px solid gainsboro;
+    border-radius: 2px;
     flex-basis: 85%;
     text-align: center;
 }
@@ -191,14 +209,15 @@
 .answer textarea {
     width: 90%;
     margin-top: 1rem;
-    border-radius: 0.5rem;
+    border-radius: 2px;
 }
 
 .answer button {
+    background-color: rgb(0, 128, 182);
     color: white;
     margin: 0.5em 1em;
-    padding: 0.2em 1em;
-    border: 1px solid;
+    padding: .5em 1.5em;
+    border: 0;
     border-radius: 2px;
 }
 
@@ -214,19 +233,26 @@
 
 @media screen and (max-width: 800px) {
     div.theme-content {
-        min-width: 95%;
+        min-width: 90%;
         margin: auto;
         margin-top: 1em;
         padding: .5em;
     }
 
-    div.theme-name p {
+    article .theme-name p {
         font-size: 0.8rem;
     }
 
-    div h2 {
+    article header h2 {
         font-size: 1.3rem;
         text-align: left;
+        padding: .5em;
+    }
+
+    article div.subscribers {
+        padding: .5em;
+        text-align: right;
+        flex-basis: 15%;
     }
 
     article.comment {
@@ -234,7 +260,7 @@
         flex-direction: column;
     }
 
-    article.comment *{
+    article.comment * {
         padding: 0;
     }
 

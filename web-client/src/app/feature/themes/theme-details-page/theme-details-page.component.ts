@@ -42,7 +42,18 @@ export class ThemeDetailsPageComponent implements OnInit {
             });
     }
 
+    subscribe() {
+
+    }
+
+    unsubscribe() {
+
+    }
+    
     canLike(comment: IPost): boolean {
         return this.currentUser && !comment.likes.includes(this.currentUser._id);
     }
+
+  
 }
+

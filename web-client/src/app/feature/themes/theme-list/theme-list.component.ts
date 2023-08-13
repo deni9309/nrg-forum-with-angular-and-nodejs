@@ -15,20 +15,6 @@ export interface L10n {
     styleUrls: [ './theme-list.component.scss' ]
 })
 export class ThemeListComponent implements OnInit {
-    l10n: L10n = {
-        'en': {
-            'no-themes-message': 'No Themes!'
-        },
-        'bg': {
-            'no-themes-message': 'Няма намерени теми!'
-        }
-    }
-
-    localize(key: string, l10n: L10n) {
-        const local = 'bg';  //TODO: get real local from browsers settings
-        return l10n[ local ][ key ];
-    }
-
 
     themeList: ITheme[];
 

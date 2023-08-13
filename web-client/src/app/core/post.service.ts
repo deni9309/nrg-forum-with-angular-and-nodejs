@@ -19,4 +19,12 @@ export class PostService {
             `${apiUrl}/posts${limit ? `?limit=${limit}` : ''}`
         );
     }
+
+    likePost(postId: string): Observable<void> {
+        return this.http.put<void>(`/likes/${postId}`, {});
+    }
+
+    removePostLike(postId: string): Observable<void> {
+        return this.http.put<void>(`/dislikes/${postId}`, {});
+    }
 }

@@ -6,7 +6,7 @@
 .theme-item-wrapper {
     justify-content: space-between;
     align-items: stretch;
-    padding: 1em 1.5em;
+    padding: 1em 1.8em;
     border: 1px solid gainsboro;
     border-radius: 0.3em;
     font-size: 0.8em;
@@ -40,12 +40,13 @@ a:visited {
 
 .subscribers {
     text-align: right;
-    flex-basis: 25%;
+    flex-basis: 20%;
 }
 
 .subscribers button {
     padding: 0.2rem 0.5rem;
     border: none;
+    margin: 0.5em auto;
     border-radius: 2px;
     color: white;
     cursor: pointer;
@@ -53,11 +54,11 @@ a:visited {
 }
 
 .subscribe {
-    background-color: green;
+    background-color: rgba(2, 157, 2, 0.803);
 }
 
 .unsubscribe {
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.83);
 }
 
 .theme-title {

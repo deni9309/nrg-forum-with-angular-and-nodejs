@@ -16,7 +16,7 @@
                              [theme]="theme">
         </app-theme-list-item>
 
-        <div *ngIf="themeList.length === 0">{{localize('no-themes-message', l10n)}}</div>
+        <div *ngIf="themeList.length === 0">No themes found!</div>
     </div>
     <div *ngIf="!themeList">
         Loading...
