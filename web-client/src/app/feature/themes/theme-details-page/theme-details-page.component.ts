@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, combineLatest, mergeMap, tap } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest, mergeMap, tap } from 'rxjs';
 
 import { IPost, ITheme, IUser } from 'src/app/core/interfaces';
 import { ThemeService } from '../../../core/theme.service';
 import { AuthService } from 'src/app/auth.service';
 import { MessageBusService } from 'src/app/core/message-bus.service';
 import { MessageType } from 'src/app/shared/constants/messageType';
+import { PostService } from 'src/app/core/post.service';
 
 @Component({
     selector: 'app-theme-details-page',
@@ -16,6 +17,8 @@ import { MessageType } from 'src/app/shared/constants/messageType';
 export class ThemeDetailsPageComponent implements OnInit {
     theme: ITheme<IPost>;
 
+    updateThemeRequest$$ = new BehaviorSubject(undefined);
+
     isLoggedIn$: Observable<boolean> = this.authService.isLoggedIn$;
     canSubscribe: boolean = false;
     currentUser?: IUser;
@@ -23,6 +26,7 @@ export class ThemeDetailsPageComponent implements OnInit {
     constructor(
         private activatedRoute: ActivatedRoute,
         private themeService: ThemeService,
+        private postService: PostService,
         private authService: AuthService,
         private messageBus: MessageBusService,
     ) { }
@@ -32,7 +36,8 @@ export class ThemeDetailsPageComponent implements OnInit {
             this.activatedRoute.params.pipe(
                 mergeMap(params => {
                     const themeId = params[ 'themeId' ];
-                    return this.themeService.loadThemeById(themeId);
+                    return this.updateThemeRequest$$.pipe(
+                        mergeMap(() => this.themeService.loadThemeById(themeId)));
                 })),
 
             this.authService.user$.pipe(tap(user => {
@@ -59,7 +64,7 @@ export class ThemeDetailsPageComponent implements OnInit {
 
     unsubscribe() {
         if (this.currentUser?._id !== (this.theme.userId).toString()) {
-            
+
             this.themeService.unsubscribeFromTheme$(this.theme._id).subscribe(updatedTheme => {
                 this.theme = updatedTheme;
                 this.canSubscribe = true;
@@ -72,14 +77,17 @@ export class ThemeDetailsPageComponent implements OnInit {
     canLikeThemePost(post: IPost): boolean {
         return this.currentUser && !post.likes.includes(this.currentUser._id);
     }
- 
-    like() {
-        
+
+    like(post: IPost) {
+        this.postService.likePost$(post._id).subscribe(() =>
+            this.updateThemeRequest$$.next(undefined)
+        );
     }
 
-    dislike() {
-        
+    dislike(post: IPost) {
+        this.postService.removePostLike$(post._id).subscribe(() =>
+            this.updateThemeRequest$$.next(undefined)
+        );
     }
-
 }
 

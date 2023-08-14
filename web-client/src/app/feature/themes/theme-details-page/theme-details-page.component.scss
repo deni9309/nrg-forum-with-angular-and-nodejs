@@ -70,11 +70,11 @@ article header p,
 }
 
 .subscribe {
-    background-color: rgba(2, 157, 2, 0.803);
+    background-color: rgba(2, 157, 2, 0.6);
 }
 
 .unsubscribe {
-    background-color: rgba(255, 0, 0, 0.83);
+    background-color: rgba(255, 0, 0, 0.7);
 }
 
 .theme-title {
@@ -146,34 +146,68 @@ article header p,
     margin: 1em 0;
     width: 5em;
     height: 5em;
-    border: 1px solid;
+    border-radius: 2px;
 }
 
+/* footer */
+
 .footer {
-    font-size: 1.5em;
-    border-top: 1px dashed;
+    border-top: 2px solid rgba(0, 128, 128, 0.2);
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     color: rgb(0, 128, 182);
 }
 
-.footer i {
-    background-color: #ffffff;
-    border: none;
+.like-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+}
+
+.footer span {
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+span.dislike {
+    background-color: gainsboro;
+    border-radius: 2px;
+    padding: .2em .5em;
+    color: rgb(82, 82, 82);
     cursor: pointer;
 }
 
-.footer p {
-    padding-left: 0.5em;
+span.like {
+    background-color: hotpink;
+    border-radius: 2px;
+    padding: .2em .5em;
+    color: white;
+    cursor: pointer;
 }
 
-.footer .fas.fa-thumbs-up {
-    color: green;
+span.dislike:hover {
+    background-color: #00040441;
 }
 
-.footer .fas.fa-thumbs-down {
-    color: red;
+span.like:hover {
+    background-color: rgb(217, 74, 146);
+}
+
+.footer .fas.fa-heart {
+    color: hotpink;
+    font-size: 1rem;
+    border: none;
+}
+
+footer p {
+    background-color: rgba(0, 128, 128, 0.2);
+    color: rgb(0, 0, 0);
+    padding: 1em;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
 }
 
 /* answer-comment */
@@ -260,11 +294,11 @@ article header p,
         flex-direction: column;
     }
 
-    article.comment * {
+    article.comment div.comment-main * {
         padding: 0;
     }
 
-    article .comment-main {
+    article div.comment-main {
         display: flex;
         flex-direction: column;
         padding: 0;
@@ -273,5 +307,20 @@ article header p,
     article .comment-main img {
         width: 40%;
         height: auto;
+    }
+
+    footer {
+        justify-content: space-between;
+    }
+
+    footer div.like-group {
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        gap: 4px
+    }
+
+    footer span.liked-info {
+        margin-top: 0.2em;
     }
 }

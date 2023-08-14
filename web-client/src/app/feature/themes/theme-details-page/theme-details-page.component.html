@@ -2,7 +2,7 @@
 <div *ngIf="theme">
     <div *ngIf="!!theme; else loadingIndicator"
          class="theme-content">
-        
+
         <article class="theme-title">
             <div class="theme-name-wrapper">
                 <header class="theme-name">
@@ -13,9 +13,11 @@
                 <div class="subscribers">
                     <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
                     <ng-container *ngIf="(isLoggedIn$ | async)">
-                        <button (click)="subscribe()" *ngIf="canSubscribe"
+                        <button (click)="subscribe()"
+                                *ngIf="canSubscribe"
                                 class="subscribe">Subscribe</button>
-                        <button (click)="unsubscribe()" *ngIf="!canSubscribe"
+                        <button (click)="unsubscribe()"
+                                *ngIf="!canSubscribe"
                                 class="unsubscribe">Unsubscribe</button>
                     </ng-container>
                 </div>
@@ -23,31 +25,46 @@
         </article>
 
         <article class="comment"
-                 *ngFor="let comment of theme.posts">
+                 *ngFor="let post of theme.posts">
             <header class="header">
-                <p><span>{{comment.userId.username}}</span> posted on
-                    <time>{{comment.created_at | date:'dd MMM yyyy, hh:mm a'}}</time>
+                <p><span>{{post.userId.username}}</span> posted on
+                    <time>{{post.created_at | date:'dd MMM yyyy, hh:mm a'}}</time>
                 </p>
             </header>
+
             <div class="comment-main">
                 <div class="userdetails"><img
-                         src="{{comment.userId.profilePicture ? comment.userId.profilePicture : '/assets/profile.png'}}"
-                         alt="{{comment.userId.username}}"></div>
+                         src="{{post.userId.profilePicture ? post.userId.profilePicture : '/assets/profile.png'}}"
+                         alt="{{post.userId.username}}"></div>
                 <div class="post-content">
-                    <p>{{comment.text}}</p>
+                    <p>{{post.text}}</p>
                 </div>
             </div>
-            <div class="footer">
-                <i *ngIf="(isLoggedIn$ | async) && canLikeThemePost(comment)"
-                   class="fas fa-thumbs-up"></i>
-                <i *ngIf="(isLoggedIn$ | async) && !canLikeThemePost(comment)"
-                   class="fas fa-thumbs-down"></i>
-                <p><span>{{comment.likes.length}}</span> likes</p>
-            </div>
+
+            <footer class="footer">
+                <ng-container *ngIf="(isLoggedIn$ | async)">
+                    <ng-container *ngIf="!canLikeThemePost(post)">
+                        <div class="like-group">
+                            <span class="liked-info">You already <i class="fas fa-heart"></i> this.</span>
+                            <span class="dislike"
+                                  (click)="dislike(post)">Remove like</span>
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngIf="canLikeThemePost(post)">
+                    <div class="like-group">
+                        <span class="like"
+                              (click)="like(post)">Like this</span>
+                    </div>
+                    </ng-container>
+                </ng-container>
+                <p><span>{{post.likes.length}}</span> likes</p>
+            </footer>
+
         </article>
 
         <section *ngIf="(isLoggedIn$ | async)"
-             class="answer-comment">
+                 class="answer-comment">
             <p>Write comment as: <span>{{currentUser.username}}</span></p>
             <div class="answer">
                 <form>

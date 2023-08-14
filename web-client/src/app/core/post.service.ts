@@ -20,11 +20,11 @@ export class PostService {
         );
     }
 
-    likePost(postId: string): Observable<void> {
+    likePost$(postId: string): Observable<void> {
         return this.http.put<void>(`${apiUrl}/likes/${postId}`, {}, { withCredentials: true });
     }
 
-    removePostLike(postId: string): Observable<void> {
+    removePostLike$(postId: string): Observable<void> {
         return this.http.put<void>(`${apiUrl}/dislikes/${postId}`, {}, { withCredentials: true });
     }
 }
