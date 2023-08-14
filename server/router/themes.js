@@ -10,8 +10,8 @@ router.post('/', auth(), themeController.createTheme);
 
 router.get('/:themeId', themeController.getTheme);
 router.post('/:themeId', auth(), postController.createPost);
-router.put('/unsubscribe/:themeId', auth(), themeController.unsubscribe);
 router.put('/:themeId', auth(), themeController.subscribe);
+router.put('/unsubscribe/:themeId', auth(), themeController.unsubscribe);
 router.put('/:themeId/posts/:postId', auth(), postController.editPost);
 router.delete('/:themeId/posts/:postId', auth(), postController.deletePost);
 

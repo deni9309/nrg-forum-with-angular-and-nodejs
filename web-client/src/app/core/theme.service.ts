@@ -24,11 +24,19 @@ export class ThemeService {
         return this.http.post<ITheme>(`${apiUrl}/themes`, data, { withCredentials: true });
     }
 
-    subscribeToTheme(themeId: string): Observable<ITheme> {
-        return this.http.put<ITheme>(`/themes/${themeId}`, {});
+    subscribeToTheme$(themeId: string): Observable<ITheme<IPost>> {
+        return this.http.put<ITheme<IPost>>(
+            `${apiUrl}/themes/${themeId}`,
+            {},
+            { withCredentials: true }
+        );
     }
 
-    unsubscribeFromTheme(themeId: string): Observable<ITheme> {
-        return this.http.put<ITheme>(`/themes/${themeId}/unsubscribe`, {});
+    unsubscribeFromTheme$(themeId: string): Observable<ITheme<IPost>> {
+        return this.http.put<ITheme<IPost>>(
+            `${apiUrl}/themes/unsubscribe/${themeId}`,
+            {},
+            { withCredentials: true }
+        );
     }
 }

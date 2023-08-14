@@ -12,7 +12,7 @@
 
                 <div class="subscribers">
                     <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
-                    <ng-container *ngIf="(isLoggedIn$ |async)">
+                    <ng-container *ngIf="(isLoggedIn$ | async)">
                         <button (click)="subscribe()" *ngIf="canSubscribe"
                                 class="subscribe">Subscribe</button>
                         <button (click)="unsubscribe()" *ngIf="!canSubscribe"
@@ -38,15 +38,15 @@
                 </div>
             </div>
             <div class="footer">
-                <i *ngIf="(isLoggedIn$ |async) && canLike(comment)"
+                <i *ngIf="(isLoggedIn$ | async) && canLikeThemePost(comment)"
                    class="fas fa-thumbs-up"></i>
-                <i *ngIf="(isLoggedIn$ |async) && !canLike(comment)"
+                <i *ngIf="(isLoggedIn$ | async) && !canLikeThemePost(comment)"
                    class="fas fa-thumbs-down"></i>
                 <p><span>{{comment.likes.length}}</span> likes</p>
             </div>
         </article>
 
-        <section *ngIf="(isLoggedIn$ |async)"
+        <section *ngIf="(isLoggedIn$ | async)"
              class="answer-comment">
             <p>Write comment as: <span>{{currentUser.username}}</span></p>
             <div class="answer">

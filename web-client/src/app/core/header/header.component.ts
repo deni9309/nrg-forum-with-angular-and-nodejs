@@ -1,12 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription, map } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { IUser } from '../interfaces';
 import { AuthService } from 'src/app/auth.service';
 import { MessageBusService } from '../message-bus.service';
 import { MessageType } from 'src/app/shared/constants/messageType';
-import { UserService } from '../user.service';
 
 @Component({
     selector: 'app-header',

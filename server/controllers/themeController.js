@@ -39,7 +39,12 @@ function createTheme(req, res, next) {
 function subscribe(req, res, next) {
     const themeId = req.params.themeId;
     const { _id: userId } = req.user;
-    themeModel.findByIdAndUpdate({ _id: themeId }, { $addToSet: { subscribers: userId } }, { new: true })
+
+    themeModel.findByIdAndUpdate(
+        { _id: themeId },
+        { $addToSet: { subscribers: userId } },
+        { upsert: true, populate: { path: 'posts' }, new: true }
+    )
         .then(updatedTheme => {
             res.status(200).json(updatedTheme)
         })
@@ -49,9 +54,14 @@ function subscribe(req, res, next) {
 function unsubscribe(req, res, next) {
     const themeId = req.params.themeId;
     const { _id: userId } = req.user;
-    themeModel.findByIdAndUpdate({ _id: themeId }, { $pull: { subscribers: userId } }, { new: true })
+
+    themeModel.findByIdAndUpdate(
+        { _id: themeId },
+        { $pull: { subscribers: userId } },
+        { upsert: true, populate: { path: 'posts' }, new: true }
+    )
         .then(updatedTheme => {
-            res.status(200).json(updatedTheme)
+            res.status(200).json(updatedTheme);
         })
         .catch(next);
 }

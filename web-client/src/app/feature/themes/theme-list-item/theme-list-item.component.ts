@@ -25,6 +25,6 @@ export class ThemeListItemComponent implements OnChanges {
             }
 
             return !this.theme.subscribers.includes(currentUser._id);
-        }))
+        }));
     }
 }
