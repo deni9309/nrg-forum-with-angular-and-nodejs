@@ -12,12 +12,19 @@
     Private part - for registered members
         Registered and logged in user can:
             1. create new theme/topic he wants to start discussion on.
-            2. subscribe/unsubscribe to other themes
-            3. like someone's comment on a certain theme
-            4. view and update his profile information
-            5. every user can upload a profile picture
+            2. preview each theme in details 
+                - can view themes' posts and likes
+                - can create posts on themes 
+            3. like/unlike other users' posts on a certain theme
+                - can like/unlike his own posts as well
+            4. subscribe/unsubscribe to themes
+                - user can't use subscription functionality on his own themes
+            5. view and update his profile information
+            5. every user can upload profile picture
 
     Public part - accessible to all site visitors
     All visitors can:
-        1. view published themes and its discussion below
-        2. filter themes by typing theme title
+        1. view brief information about published themes
+        2. use search - filter themes by typing theme title
+        3. preview each theme in details 
+            - can only preview themes's posts likes and subscription
