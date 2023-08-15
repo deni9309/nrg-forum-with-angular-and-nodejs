@@ -27,4 +27,4 @@
         1. view brief information about published themes
         2. use search - filter themes by typing theme title
         3. preview each theme in details 
-            - can only preview themes's posts likes and subscription
+            - can only preview themes' posts likes and subscription
