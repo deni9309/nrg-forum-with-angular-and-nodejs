@@ -3,7 +3,7 @@
 }
 
 .profile {
-    padding: 0.5em;
+    padding: 2em;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@
     justify-content: center;
     margin-top: 2em;
     margin-bottom: 2em;
-    padding: 40px;
+ 
     border: 1px solid rgb(219, 219, 219);
     border-radius: 4px;
     background-color: hsla(0, 0%, 100%, 0.6);
@@ -29,6 +29,8 @@
     margin: auto;
     display: block;
     border-radius: 2px;
+        padding: 0;
+        border-radius: 2px;
 }
 
 .profile form {
@@ -42,6 +44,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+form input {
+    border-left: 0.3em solid green;
 }
 
 form.disabled input,
@@ -84,10 +90,6 @@ form.disabled .input-group p {
     margin-right: auto;
 }
 
-.profile button:hover:not(button:disabled) {
-    background-color: #00040441;
-}
-
 button:disabled {
     color: #e9ecef;
     background-color: #ccc;
@@ -95,17 +97,25 @@ button:disabled {
 }
 
 .red-button {
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.7);
     margin-right: 0.5em;
 }
 
 .green-button {
-    background-color: green;
+    background-color: rgba(2, 157, 2, 0.6);
     margin-left: 0.5em;
+}
+
+.red-button:hover {
+    background-color: rgba(195, 0, 0, 0.7);
+}
+.green-button:hover {
+    background-color: rgba(0, 102, 0, 0.6);
 }
 
 .button-group {
     margin: 2em auto;
+    margin-bottom: 0.2em;
     display: flex;
 }
 
@@ -114,21 +124,20 @@ button:disabled {
 p.error {
     display: flex;
     justify-content: center;
-    border-radius: 0.3em;
     color: red;
     padding-top: 0;
     font-size: 0.8em;
 }
 
-.input-error {
-    border-left-color: red;
+form .input-error {
+    border-left-color: rgba(255, 0, 0, 0.9);
 }
 
 @media screen and (max-width: 800px) {
     div.profile#profile {
         margin-top: 1em;
         margin-bottom: 1em;
-        padding: 40px;
+        padding: .2em;
     }
 
     .profile * {

@@ -4,10 +4,18 @@ function newPost(text, userId, themeId) {
     return postModel.create({ text, userId, themeId })
         .then(post => {
             return Promise.all([
-                userModel.updateOne({ _id: userId }, { $push: { posts: post._id }, $addToSet: { themes: themeId } }),
-                themeModel.findByIdAndUpdate({ _id: themeId }, { $push: { posts: post._id }, $addToSet: { subscribers: userId } }, { new: true })
-            ])
-        })
+                userModel.updateOne(
+                    { _id: userId },
+                    { $push: { posts: post._id }, $addToSet: { themes: themeId } }
+                ),
+
+                themeModel.findByIdAndUpdate(
+                    { _id: themeId },
+                    { $push: { posts: post._id }, $addToSet: { subscribers: userId } },
+                    { upsert: true, new: true, populate: { path: 'posts' } }
+                ),
+            ]);
+        });
 }
 
 function getLatestsPosts(req, res, next) {
@@ -29,7 +37,9 @@ function createPost(req, res, next) {
     const { postText } = req.body;
 
     newPost(postText, userId, themeId)
-        .then(([_, updatedTheme]) => res.status(200).json(updatedTheme))
+        .then(([_, updatedTheme]) => {
+            res.status(200).json(updatedTheme)
+        })
         .catch(next);
 }
 

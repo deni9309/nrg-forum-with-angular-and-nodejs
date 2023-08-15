@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable, combineLatest, mergeMap, tap } from 'rxjs';
 
 import { IPost, ITheme, IUser } from 'src/app/core/interfaces';
@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/auth.service';
 import { MessageBusService } from 'src/app/core/message-bus.service';
 import { MessageType } from 'src/app/shared/constants/messageType';
 import { PostService } from 'src/app/core/post.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'app-theme-details-page',
@@ -15,6 +16,8 @@ import { PostService } from 'src/app/core/post.service';
     styleUrls: [ './theme-details-page.component.scss' ]
 })
 export class ThemeDetailsPageComponent implements OnInit {
+    @ViewChild('form') form: NgForm;
+
     theme: ITheme<IPost>;
 
     updateThemeRequest$$ = new BehaviorSubject(undefined);
@@ -29,6 +32,7 @@ export class ThemeDetailsPageComponent implements OnInit {
         private postService: PostService,
         private authService: AuthService,
         private messageBus: MessageBusService,
+        private router:Router,
     ) { }
 
     ngOnInit(): void {
@@ -88,6 +92,21 @@ export class ThemeDetailsPageComponent implements OnInit {
         this.postService.removePostLike$(post._id).subscribe(() =>
             this.updateThemeRequest$$.next(undefined)
         );
+    }
+
+    createThemePost(form: NgForm) {
+        if (form.invalid) { return; }
+     
+        this.themeService.createThemePost$(this.theme._id, form.value.postText).subscribe({
+            next: updatedTheme => {
+                this.theme.posts = updatedTheme.posts;
+                form.reset();
+            },
+            error: (err) => {
+                console.error(err);
+                this.router.navigate([ '/error' ]);
+            }
+        })
     }
 }
 

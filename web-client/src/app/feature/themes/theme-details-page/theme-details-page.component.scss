@@ -1,9 +1,10 @@
 :host {
     margin: auto;
+    margin-bottom: 2em;
     display: flex;
 }
 
-/* theme content  */
+/* theme details layout  */
 .theme-content {
     display: flex;
     flex-direction: column;
@@ -15,7 +16,7 @@
     background-color: rgba(255, 255, 255, 0.622);
 }
 
-/* theme title  */
+/* theme header part */
 
 .theme-name-wrapper {
     display: flex;
@@ -149,7 +150,7 @@ article header p,
     border-radius: 2px;
 }
 
-/* footer */
+/* comment footer */
 
 .footer {
     border-top: 2px solid rgba(0, 128, 128, 0.2);
@@ -210,7 +211,7 @@ footer p {
     border-bottom-right-radius: 2px;
 }
 
-/* answer-comment */
+/* create comment */
 
 .answer-comment {
     margin-top: 1em;
@@ -236,20 +237,21 @@ footer p {
 .answer {
     border: 1px solid gainsboro;
     border-radius: 2px;
-    flex-basis: 85%;
     text-align: center;
 }
 
 .answer textarea {
     width: 90%;
-    margin-top: 1rem;
+    margin-top: 1em;
     border-radius: 2px;
+    padding: 0.5em;
+    border-left: 0.3em solid green;
 }
 
 .answer button {
     background-color: rgb(0, 128, 182);
     color: white;
-    margin: 0.5em 1em;
+    margin: 1em auto;
     padding: .5em 1.5em;
     border: 0;
     border-radius: 2px;
@@ -260,10 +262,19 @@ footer p {
     cursor: pointer;
 }
 
-.comment-area {
-    min-width: 100%
+/* errors */
+
+p.error {
+    display: flex;
+    justify-content: center;
+    color: red;
+    padding-top: 0;
+    font-size: 0.8em;
 }
 
+form .input-error {
+    border-left-color: rgba(255, 0, 0, 0.9);
+}
 
 @media screen and (max-width: 800px) {
     div.theme-content {

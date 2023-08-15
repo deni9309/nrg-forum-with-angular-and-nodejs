@@ -61,6 +61,14 @@ a:visited {
     background-color: rgba(255, 0, 0, 0.6);
 }
 
+.subscribe:hover {
+    background-color: rgba(0, 102, 0, 0.6);
+}
+
+.unsubscribe:hover {
+    background-color: rgba(195, 0, 0, 0.7);
+}
+
 .theme-title {
     width: 100%;
 }
@@ -121,79 +129,4 @@ a:visited {
     width: 5em;
     height: 5em;
     border: 1px solid;
-}
-
-.footer {
-    font-size: 1.5em;
-    border-top: 1px dashed;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    color: rgb(0, 128, 182);
-}
-
-.footer i {
-    background-color: #ffffff;
-    border: none;
-    cursor: pointer;
-}
-
-.footer p {
-    padding-left: 0.5em;
-}
-
-.footer .fas.fa-thumbs-up {
-    color: rgba(0, 128, 0, 0.693);
-}
-
-.footer .fas.fa-thumbs-down {
-    color: rgba(246, 34, 34, 0.882);
-}
-
-/* answer-comment */
-
-.answer-comment {
-    width: 100%;
-    /* display: flex; */
-    margin-top: 1em;
-}
-
-.answer-comment p {
-    flex-basis: 15%;
-    padding-bottom: 0.3em;
-}
-
-.answer-comment p span {
-    color: rgb(0, 128, 182);
-    font-size: 1.2em;
-}
-
-.answer {
-    border: 1px solid;
-    border-radius: 0.3em;
-    flex-basis: 85%;
-    text-align: center;
-}
-
-.answer textarea {
-    width: 90%;
-    margin-top: 1rem;
-    border-radius: 0.5rem;
-}
-
-.answer button {
-    color: white;
-    margin: 0.5em 1em;
-    padding: 0.2em 1em;
-    border: 1px solid;
-    border-radius: 2px;
-}
-
-.answer button:hover {
-    cursor: pointer;
-    background-color: #1b4d0f78;
-}
-
-.comment-area {
-    min-width: 100%
 }

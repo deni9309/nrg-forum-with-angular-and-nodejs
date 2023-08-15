@@ -73,6 +73,9 @@
     border-left: 0.3em solid green;
 }
 
+
+/* buttons */
+
 button+button {
     margin-left: 1rem;
 }
@@ -91,10 +94,28 @@ button+button {
 }
 
 .new-theme-buttons button:disabled {
-    color: #e9ecef;
+    color: rgb(245, 245, 245);
     background-color: #ccc;
     cursor: not-allowed;
 }
+
+.green-button {
+    background-color: rgba(2, 157, 2, 0.6);
+}
+
+.red-button {
+    background-color: rgba(255, 0, 0, 0.7);
+}
+
+.red-button:hover {
+    background-color: rgba(195, 0, 0, 0.7);
+}
+
+.green-button:hover {
+    background-color: rgba(0, 102, 0, 0.6);
+}
+
+/* errors */
 
 p.error {
     text-align: left;
@@ -105,12 +126,12 @@ p.error {
 }
 
 .red {
-    color: red;
+    color: rgba(255, 0, 0, 0.7);
 }
 
 .new-theme-title .input-error,
 .new-theme-content textarea.input-error {
-    border-left-color: red;
+    border-left-color: rgba(255, 0, 0, 0.9);
 }
 
 @media screen and (max-width: 800px) {

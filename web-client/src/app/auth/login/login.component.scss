@@ -39,7 +39,7 @@ form.login {
     border-top-left-radius: 2px;
 }
 
-.login p {
+.login p:not(p.error) {
     padding-bottom: 0;
     padding-top: 1.5rem;
 }
@@ -48,8 +48,8 @@ form.login {
     flex: 0 1 100%;
     padding: 0.3em;
     border-left: 0.3em solid green;
-    border-top-right-radius: 0.3em;
-    border-bottom-right-radius: 0.3em;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
 }
 
 .login button {
@@ -68,7 +68,7 @@ form.login {
 }
 
 .login i {
-    border: 1px solid;
+border: 1px solid rgb(214, 214, 214);
     border-right: none;
     padding: 0.55em;
     border-top-left-radius: 0.3em;
@@ -86,7 +86,6 @@ form.login {
 
 .login .field {
     display: flex;
-    padding-bottom: 0;
 }
 
 p.text-center {
@@ -99,8 +98,7 @@ p.error {
     text-align: left;
     border-radius: 2px;
     color: red;
-    padding-top: 0;
-    margin-top: 0;
+    margin-top: 0.3em;
     font-size: 0.8em;
 }
 

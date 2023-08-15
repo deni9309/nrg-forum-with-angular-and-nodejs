@@ -52,10 +52,10 @@
                     </ng-container>
 
                     <ng-container *ngIf="canLikeThemePost(post)">
-                    <div class="like-group">
-                        <span class="like"
-                              (click)="like(post)">Like this</span>
-                    </div>
+                        <div class="like-group">
+                            <span class="like"
+                                  (click)="like(post)">Like this</span>
+                        </div>
                     </ng-container>
                 </ng-container>
                 <p><span>{{post.likes.length}}</span> likes</p>
@@ -67,13 +67,31 @@
                  class="answer-comment">
             <p>Write comment as: <span>{{currentUser.username}}</span></p>
             <div class="answer">
-                <form>
-                    <textarea name="postText"
-                              id="comment"
+                
+                <form #form="ngForm"
+                      (ngSubmit)="createThemePost(form)">
+                    <textarea [class.input-error]="postText.touched && postText.invalid"
+                              name="postText"
+                              id="postText"
                               cols="30"
-                              rows="10"></textarea>
+                              rows="10"
+                              ngModel
+                              #postText="ngModel"
+                              required
+                              minlength="3">
+                    </textarea>
+                    <ng-container *ngIf="postText.touched && postText.invalid">
+                        <p class="error"
+                           *ngIf="postText.errors?.['required']">Your post must have content!</p>
+                        <p class="error"
+                           *ngIf="postText.errors?.['minlength']">Post content must be at least 3
+                            characters long!
+                        </p>
+                    </ng-container>
+
                     <button>Post</button>
                 </form>
+          
             </div>
         </section>
 

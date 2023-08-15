@@ -28,8 +28,11 @@ span {
     font-weight: bold;
 }
 
+
+/* primary button */
+
 button {
-    background-color: #4ebced;
+    background-color: #007f99;
     color: white;
     border-radius: 2px;
 }
@@ -44,7 +47,7 @@ textarea,
 select {
     border: 1px solid lightgray;
     outline: 0;
-    border-radius: 4px;
+    border-radius: 2px;
 }
 
 input:focus,
