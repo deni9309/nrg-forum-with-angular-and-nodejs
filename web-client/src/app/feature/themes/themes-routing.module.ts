@@ -8,16 +8,16 @@ import { AuthGuard } from "src/app/core/guards/auth.guard";
 const router: Routes = [
     {
         path: '',
-        component: ThemesPageComponent
+        component: ThemesPageComponent,
     },
     {
         path: 'new',
         canActivate: [ AuthGuard ],
-        component: ThemeNewPageComponent
+        component: ThemeNewPageComponent,
     },
     {
         path: ':themeId',
-        component: ThemeDetailsPageComponent
+        component: ThemeDetailsPageComponent,
     },
 ];
 

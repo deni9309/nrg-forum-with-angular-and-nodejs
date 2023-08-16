@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject, Observable, combineLatest, mergeMap, tap } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest, mergeMap } from 'rxjs';
 
 import { IPost, ITheme, IUser } from 'src/app/core/interfaces';
 import { ThemeService } from '../../../core/theme.service';
@@ -42,13 +42,12 @@ export class ThemeDetailsPageComponent implements OnInit {
                     const themeId = params[ 'themeId' ];
                     return this.updateThemeRequest$$.pipe(
                         mergeMap(() => this.themeService.loadThemeById(themeId)));
-                })),
-
-            this.authService.user$.pipe(tap(user => {
-                this.currentUser = user
-            }))
+                }),
+            ),
+            this.authService.user$
         ])
             .subscribe(([ theme, user ]) => {
+                this.currentUser = user;
                 this.theme = theme;
                 this.canSubscribe = user && !this.theme.subscribers.includes(user?._id);
             });

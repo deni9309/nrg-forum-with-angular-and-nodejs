@@ -12,24 +12,20 @@ const routes: Routes = [
     },
     {
         path: 'home',
-        component: HomePageComponent
+        component: HomePageComponent,
     },
     {
         path: 'auth',
-        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
     },
     {
         path: 'themes',
-        loadChildren: () => import('./feature/themes/themes.module').then(m => m.ThemesModule)
+        loadChildren: () => import('./feature/themes/themes.module').then(m => m.ThemesModule),
     },
     {
-        path: 'error',
-        component: NotFoundPageComponent
+        path: '**',
+        component: NotFoundPageComponent,
     },
-    // {
-    //     path: '**',
-    //     component: NotFoundPageComponent
-    // },
 ];
 
 @NgModule({
