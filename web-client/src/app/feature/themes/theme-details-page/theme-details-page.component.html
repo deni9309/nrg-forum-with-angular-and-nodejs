@@ -25,7 +25,7 @@
         </article>
 
         <article class="comment"
-                 *ngFor="let post of theme.posts">
+                 *ngFor="let post of theme.posts; trackBy: postTrackBy">
             <header class="header">
                 <p><span>{{post.userId.username}}</span> posted on
                     <time>{{post.created_at | date:'dd MMM yyyy, hh:mm a'}}</time>
@@ -67,7 +67,7 @@
                  class="answer-comment">
             <p>Write comment as: <span>{{currentUser.username}}</span></p>
             <div class="answer">
-                
+
                 <form #form="ngForm"
                       (ngSubmit)="createThemePost(form)">
                     <textarea [class.input-error]="postText.touched && postText.invalid"
@@ -91,7 +91,7 @@
 
                     <button>Post</button>
                 </form>
-          
+
             </div>
         </section>
 

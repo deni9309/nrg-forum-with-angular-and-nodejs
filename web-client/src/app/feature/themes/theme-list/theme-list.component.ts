@@ -18,16 +18,15 @@ export class ThemeListComponent implements OnInit {
 
     themeList: ITheme[];
 
-    searchControl = new FormControl();  //new FormControl('', { updateOn: 'blur' });
+    searchControl = new FormControl();
 
     constructor(private themeService: ThemeService) { }
 
     ngOnInit(): void {
         this.searchControl.valueChanges.pipe(
             debounceTime(500),
-            //filter(searchTerm => searchTerm.length >= 3),
             startWith(''),
-            switchMap(searchTerm => this.themeService.loadThemeList(searchTerm)) //switches to the latest Observable and passes that along
+            switchMap(searchTerm => this.themeService.loadThemeList(searchTerm)) //switches to the latest Observable and passes it along
         )
             .subscribe(themeList => { this.themeList = themeList; });
     }

@@ -32,7 +32,7 @@ export class ThemeDetailsPageComponent implements OnInit {
         private postService: PostService,
         private authService: AuthService,
         private messageBus: MessageBusService,
-        private router:Router,
+        private router: Router,
     ) { }
 
     ngOnInit(): void {
@@ -96,7 +96,7 @@ export class ThemeDetailsPageComponent implements OnInit {
 
     createThemePost(form: NgForm) {
         if (form.invalid) { return; }
-     
+
         this.themeService.createThemePost$(this.theme._id, form.value.postText).subscribe({
             next: updatedTheme => {
                 this.theme.posts = updatedTheme.posts;
@@ -107,6 +107,10 @@ export class ThemeDetailsPageComponent implements OnInit {
                 this.router.navigate([ '/error' ]);
             }
         })
+    }
+
+    postTrackBy(index: number, post: IPost) {
+        return post._id;
     }
 }
 
