@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime, filter, startWith, switchMap } from 'rxjs';
+import { debounceTime, startWith, switchMap } from 'rxjs';
 
 import { ITheme } from '../../../core/interfaces';
 import { ThemeService } from '../../../core/theme.service';
-
-export interface L10n {
-    [ key: string ]: { [ subKey: string ]: string }
-}
 
 @Component({
     selector: 'app-theme-list',

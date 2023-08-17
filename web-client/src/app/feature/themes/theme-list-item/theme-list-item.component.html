@@ -14,11 +14,11 @@
                 </div>
             </div>
             <div class="subscribers">
-                <button *ngIf="(isLoggedIn$ |async)"
-                        [class.subscribe]="(canSubscribe$ | async)"
-                        [class.unsubscribe]="!(canSubscribe$ | async)">
-                    {{(canSubscribe$ | async) ? 'Subscribe' : 'Unsubscribe'}}
-                </button>
+                <p *ngIf="(isLoggedIn$ |async)"
+                   [class.canSubscribe]="(canSubscribe$ | async)"
+                   [class.already-subscribed]="!(canSubscribe$ | async)">
+                    {{(canSubscribe$ | async) ? 'Available for subscription' : 'You\'re already subscribed'}}
+                </p>
 
                 <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
             </div>

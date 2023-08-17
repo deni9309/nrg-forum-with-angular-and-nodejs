@@ -23,13 +23,14 @@
     padding: .8em;
 }
 
-a {
+a,
+a:visited {
     text-decoration: none;
     color: teal;
 }
 
-a:visited {
-    color: teal;
+a:hover {
+    color: orange;
 }
 
 .columns {
@@ -39,34 +40,24 @@ a:visited {
 }
 
 .subscribers {
-    text-align: right;
-    flex-basis: 20%;
+    flex-basis: 25%;
+    text-align: center;
 }
 
-.subscribers button {
+.subscribers p {
     padding: 0.2rem 0.5rem;
-    border: none;
     margin: 0.5em auto;
     border-radius: 2px;
-    color: white;
-    cursor: pointer;
-    width: 100%;
+    color: #6c6c6c;
+    font-size: 0.9rem;
 }
 
-.subscribe {
-    background-color: rgba(2, 157, 2, 0.6);
+.canSubscribe {
+    border: 1px dashed rgba(2, 157, 2, 0.6);
 }
 
-.unsubscribe {
-    background-color: rgba(255, 0, 0, 0.6);
-}
-
-.subscribe:hover {
-    background-color: rgba(0, 102, 0, 0.6);
-}
-
-.unsubscribe:hover {
-    background-color: rgba(195, 0, 0, 0.7);
+.already-subscribed {
+    border: 1px dashed orange;
 }
 
 .theme-title {

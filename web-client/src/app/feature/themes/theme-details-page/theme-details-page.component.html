@@ -25,7 +25,7 @@
         </article>
 
         <article class="comment"
-                 *ngFor="let post of theme.posts; trackBy: postTrackBy">
+                 *ngFor="let post of theme.posts">
             <header class="header">
                 <p><span>{{post.userId.username}}</span> posted on
                     <time>{{post.created_at | date:'dd MMM yyyy, hh:mm a'}}</time>
@@ -33,9 +33,10 @@
             </header>
 
             <div class="comment-main">
-                <div class="userdetails"><img
-                         src="{{post.userId.profilePicture ? post.userId.profilePicture : '/assets/profile.png'}}"
-                         alt="{{post.userId.username}}"></div>
+                <div class="userdetails">
+                    <img src="{{post.userId.profilePicture ? post.userId.profilePicture : '/assets/profile.png'}}"
+                         alt="{{post.userId.username}}">
+                </div>
                 <div class="post-content">
                     <p>{{post.text}}</p>
                 </div>

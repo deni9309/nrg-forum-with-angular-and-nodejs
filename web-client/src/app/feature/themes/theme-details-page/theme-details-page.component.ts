@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject, Observable, combineLatest, mergeMap } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest, map, mergeMap } from 'rxjs';
 
 import { IPost, ITheme, IUser } from 'src/app/core/interfaces';
 import { ThemeService } from '../../../core/theme.service';
@@ -97,19 +97,15 @@ export class ThemeDetailsPageComponent implements OnInit {
         if (form.invalid) { return; }
 
         this.themeService.createThemePost$(this.theme._id, form.value.postText).subscribe({
-            next: updatedTheme => {
-                this.theme.posts = updatedTheme.posts;
+            next: () => {
+                this.updateThemeRequest$$.next(undefined)
                 form.reset();
             },
             error: (err) => {
                 console.error(err);
                 this.router.navigate([ '/error' ]);
             }
-        })
-    }
-
-    postTrackBy(index: number, post: IPost) {
-        return post._id;
+        });
     }
 }
 
