@@ -10,6 +10,7 @@
     flex-direction: column;
     margin: 2em auto;
     width: auto;
+    min-width: 700px;
     max-width: 80%;
     margin-bottom: 2em;
     padding: 2em;
@@ -33,11 +34,26 @@ article header {
     width: 100%;
 }
 
-article header h2,
+article header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3em;
+}
+
 article header p,
 .subscribers p,
 .subscribers button {
     padding: 1em;
+}
+
+article header .display-theme-for-owner {
+    padding: 0.5em;
+    background-color: rgba(255, 105, 180, 0.148);
+    border: 1px dashed hotpink;
+    border-radius: 2px;
+}
+
+.fas.fa-star {
+    color: hotpink;
 }
 
 .subscribers p {
@@ -92,6 +108,7 @@ article header p,
 
 .theme-name h2 {
     padding-top: 0;
+    border-bottom: 1px solid orange;
 }
 
 /* comment  */

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject, Observable, combineLatest, map, mergeMap } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest, mergeMap } from 'rxjs';
 
 import { IPost, ITheme, IUser } from 'src/app/core/interfaces';
 import { ThemeService } from '../../../core/theme.service';
@@ -26,6 +26,8 @@ export class ThemeDetailsPageComponent implements OnInit {
     canSubscribe: boolean = false;
     currentUser?: IUser;
 
+    isOwner: boolean = false;
+
     constructor(
         private activatedRoute: ActivatedRoute,
         private themeService: ThemeService,
@@ -50,15 +52,22 @@ export class ThemeDetailsPageComponent implements OnInit {
                 this.currentUser = user;
                 this.theme = theme;
                 this.canSubscribe = user && !this.theme.subscribers.includes(user?._id);
+                this.isOwner = user && this.theme.userId.toString() === user?._id;
             });
     }
 
     subscribe() {
         if (this.currentUser?._id !== (this.theme.userId).toString()) {
 
-            this.themeService.subscribeToTheme$(this.theme._id).subscribe(updatedTheme => {
-                this.theme = updatedTheme;
-                this.canSubscribe = false;
+            this.themeService.subscribeToTheme$(this.theme._id).subscribe({
+                next: () => {
+                    this.updateThemeRequest$$.next(undefined);
+                    this.canSubscribe = false;
+                },
+                error: (err) => {
+                    console.error(err);
+                    this.router.navigate([ '/error' ]);
+                }
             });
         } else {
             this.messageBus.notifyForMessage({ text: 'You can not subscribe to your own themes.', type: MessageType.Error })
@@ -68,9 +77,15 @@ export class ThemeDetailsPageComponent implements OnInit {
     unsubscribe() {
         if (this.currentUser?._id !== (this.theme.userId).toString()) {
 
-            this.themeService.unsubscribeFromTheme$(this.theme._id).subscribe(updatedTheme => {
-                this.theme = updatedTheme;
-                this.canSubscribe = true;
+            this.themeService.unsubscribeFromTheme$(this.theme._id).subscribe({
+                next: () => {
+                    this.updateThemeRequest$$.next(undefined);
+                    this.canSubscribe = true;
+                },
+                error: (err) => {
+                    console.error(err);
+                    this.router.navigate([ '/error' ]);
+                }
             });
         } else {
             this.messageBus.notifyForMessage({ text: 'You can not unsubscribe from your own themes.', type: MessageType.Error })

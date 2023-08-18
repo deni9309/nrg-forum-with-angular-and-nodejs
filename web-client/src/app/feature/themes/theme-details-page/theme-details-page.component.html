@@ -7,6 +7,8 @@
             <div class="theme-name-wrapper">
                 <header class="theme-name">
                     <h2>{{theme.themeName}}</h2>
+                    <p *ngIf="isOwner"
+                       class="display-theme-for-owner"><i class="fas fa-star"></i> Created by you</p>
                     <p>Date: <time>{{theme.created_at | date:'dd MMM yyyy, hh:mm a'}}</time></p>
                 </header>
 

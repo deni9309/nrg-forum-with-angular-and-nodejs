@@ -1,13 +1,19 @@
-<div class="theme-item-wrapper">
+<div [class.displayForOwner]="((user$ | async)?._id === theme.userId._id)"
+     class="theme-item-wrapper">
     <div class="theme-item">
         <a [routerLink]="['/themes', theme._id]">
             <h2 title="{{theme.themeName}}"
-                *ngIf="theme.themeName.length > 25">{{(theme.themeName | slice:0:25) + '...'}}</h2>
+                *ngIf="theme.themeName.length > 35">{{(theme.themeName | slice:0:35) + '...'}}</h2>
             <h2 title="{{theme.themeName}}"
                 *ngIf="theme.themeName.length <= 25">{{theme.themeName}}</h2>
         </a>
         <div class="columns">
             <div>
+                <p *ngIf="(user$ | async)?._id === theme.userId._id"
+                   class="my-theme">
+                    <i class="fas fa-star"></i> Created by you
+                </p>
+
                 <p>Date: <time>{{theme.created_at | date:'dd MMM yyyy, hh:mm a'}}</time></p>
                 <div>
                     <p>Created by: <span>{{theme.userId.username}}</span></p>
