@@ -13,7 +13,11 @@ export class ThemeService {
     constructor(private http: HttpClient) { }
 
     loadThemeList(searchTerm: string = ''): Observable<ITheme[]> {
-        return this.http.get<ITheme[]>(`${apiUrl}/themes?title=${searchTerm}`);
+        let encodedSearch = searchTerm;
+        if (searchTerm !== '') {
+            encodedSearch = encodeURIComponent(searchTerm)
+        }
+        return this.http.get<ITheme[]>(`${apiUrl}/themes?title=${encodedSearch}`);
     }
 
     loadThemeById(id: string): Observable<ITheme<IPost>> {

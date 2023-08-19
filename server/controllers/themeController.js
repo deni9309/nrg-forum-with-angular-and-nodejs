@@ -2,7 +2,10 @@ const { themeModel } = require('../models');
 const { newPost } = require('./postController')
 
 function getThemes(req, res, next) {
-    const title = req.query.title || '';
+    let title = req.query.title || '';
+    if (title.includes('+')) { title = title.replace(/\+/g, '\\+') }
+    if (title.includes('#')) { title = title.replace(/\#/g, '\\#') }
+    if (title.includes('.')) { title = title.replace(/\./g, '\\.') }
 
     themeModel.find({ themeName: { $regex: title, $options: 'i' } })
         .populate('userId')
