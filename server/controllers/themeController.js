@@ -1,13 +1,13 @@
 const { themeModel } = require('../models');
-const { newPost } = require('./postController')
+const { newPost } = require('./postController');
+const { transformToRegex } = require('../utils/transformToRegex');
 
 function getThemes(req, res, next) {
     let title = req.query.title || '';
-    if (title.includes('+')) { title = title.replace(/\+/g, '\\+') }
-    if (title.includes('#')) { title = title.replace(/\#/g, '\\#') }
-    if (title.includes('.')) { title = title.replace(/\./g, '\\.') }
 
-    themeModel.find({ themeName: { $regex: title, $options: 'i' } })
+    const pattern = transformToRegex(title);
+
+    themeModel.find({ themeName: { $regex: pattern, $options: 'i' } })
         .populate('userId')
         .then(themes => res.json(themes))
         .catch(next);
