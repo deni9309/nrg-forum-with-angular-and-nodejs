@@ -2,7 +2,7 @@
 main {
     color: #595959;
     width: 60%;
-    margin: 0em auto;
+    margin: 0em 1em;
     background-color: rgba(255, 255, 255, 0.622);
     padding: 1em;
 }
@@ -46,7 +46,7 @@ aside {
 
 @media screen and (max-width: 1024px) {
     .container main{
-        margin-top: 0;
+        margin-top: 1em;
     }
 }
 

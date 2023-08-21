@@ -5,9 +5,10 @@
     align-items: stretch;
 }
 
-/* search form */
+/* -----------search form------------ */
 form.filter-form {
     margin-top: 1em;
+    margin-bottom: 0em;
     width: 100%;
 }
 
@@ -22,13 +23,67 @@ p {
     width: 100%;
 }
 
-form i {
+form i#search{
     border: 1px solid rgb(214, 214, 214);
     border-right: none;
     padding: 0.55em;
-    border-top-left-radius: 0.3em;
-    border-bottom-left-radius: 0.3em;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
     background-color: #e9ecef;
+}
+
+/* ---------pagination--------- */
+div.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em auto 1.1em auto;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a,
+a>i {
+    width: 36px;
+    height: 36px;
+    color: rgb(22, 22, 22);
+    float: left;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+    border: 1px solid gainsboro;
+}
+
+a>i {
+    color: gray;
+}
+
+.pagination a:first-child {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.pagination a:last-child {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.pagination a.active {
+    background-color: rgba(2, 157, 2, 0.6);
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: gainsboro;
+}
+
+/* ------end of pagination---------- */
+
+ng-container {
+    margin-top: 0;
 }
 
 .themes-wrapper a {
