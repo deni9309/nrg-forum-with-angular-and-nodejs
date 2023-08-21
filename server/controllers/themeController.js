@@ -13,6 +13,26 @@ function getThemes(req, res, next) {
         .catch(next);
 }
 
+function getThemesPaginated(req, res, next) {
+    const title = req.query.title || '';
+    const pattern = transformToRegex(title);
+
+    const startIndex = Number(req.query.startIndex) || 0;
+    const limit = Number(req.query.limit) || Number.MAX_SAFE_INTEGER;
+
+    Promise.all([
+        themeModel.find({ themeName: { $regex: pattern, $options: 'i' } })
+            .skip(startIndex)
+            .limit(limit)
+            .populate('userId'),
+
+        themeModel.find({ themeName: { $regex: pattern, $options: 'i' } })
+            .countDocuments(),
+    ])
+        .then(([results, totalResultsCount]) => res.json({ results, totalResultsCount }))
+        .catch(next);
+}
+
 function getTheme(req, res, next) {
     const { themeId } = req.params;
 
@@ -71,6 +91,7 @@ function unsubscribe(req, res, next) {
 
 module.exports = {
     getThemes,
+    getThemesPaginated,
     createTheme,
     getTheme,
     subscribe,
