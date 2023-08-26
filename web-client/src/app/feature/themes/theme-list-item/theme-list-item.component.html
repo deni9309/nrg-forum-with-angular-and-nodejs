@@ -1,6 +1,6 @@
 <div [class.displayForOwner]="((user$ | async)?._id === theme.userId._id)"
      class="theme-item-wrapper">
-    <div class="theme-item">
+    <div class="theme-item" @fade>
         <a [routerLink]="['/themes', theme._id]">
             <span class="tooltiptext">{{theme.themeName}}</span>
             <h2 *ngIf="theme.themeName.length > 35">{{(theme.themeName | slice:0:35) + '...'}}</h2>

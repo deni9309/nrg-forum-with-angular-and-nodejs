@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 import { DEFAULT_EMAIL_DOMAINS } from '../../shared/constants/validation-constants';
 import { IUser } from 'src/app/core/interfaces';
@@ -13,9 +13,9 @@ import { UserService } from 'src/app/core/user.service';
     styleUrls: [ './profile.component.scss' ],
     animations: [
         trigger('fade', [
-            transition('void => *', [
-                style({ opacity: 0 }),
-                animate(1200) ])
+            state('void', style({ opacity: 0 })),
+            transition('void => *',
+                animate('0.9s 0.1s ease-in-out'))
         ])
     ]
 })

@@ -9,7 +9,7 @@ import { PAGE_SIZE } from 'src/app/shared/constants/layoutSpecifics';
 @Component({
     selector: 'app-theme-list',
     templateUrl: './theme-list.component.html',
-    styleUrls: [ './theme-list.component.scss' ]
+    styleUrls: [ './theme-list.component.scss' ],
 })
 export class ThemeListComponent implements OnInit {
     themeList: ITheme[];

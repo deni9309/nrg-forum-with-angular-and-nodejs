@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
+import { animate, style, transition, trigger, stagger, query } from '@angular/animations';
 
 import { ITheme, IUser } from 'src/app/core/interfaces';
 import { AuthService } from 'src/app/auth.service';
@@ -7,7 +8,20 @@ import { AuthService } from 'src/app/auth.service';
 @Component({
     selector: 'app-theme-list-item',
     templateUrl: './theme-list-item.component.html',
-    styleUrls: [ './theme-list-item.component.scss' ]
+    styleUrls: [ './theme-list-item.component.scss' ],
+    animations: [
+        trigger('fade', [
+            transition('void => *', [
+                query(':enter', [
+                    style({ opacity: 0, transform: 'translateY(-100px)' }),
+                    stagger('300ms', [
+                        animate('0.8s cubic-bezier(0.35, 0, 0.25, 1)'),
+                        style({ opacity: 1, transform:'none' })
+                    ])
+                ], { optional: true })
+            ]),
+        ])
+    ]
 })
 export class ThemeListItemComponent implements OnChanges, OnInit {
 

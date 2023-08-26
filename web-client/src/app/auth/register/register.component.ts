@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 import { emailValidator } from '../validators/emailValidator';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants/validation-constants';
@@ -15,10 +15,10 @@ import { AuthService } from 'src/app/auth.service';
     styleUrls: [ './register.component.scss' ],
     animations: [
         trigger('fade', [
-            transition('void => *', [
-                style({ opacity: 0 }),
-                animate(1200)
-            ])
+            state('void', style({ opacity: 0 })),
+            transition('void <=> *', [
+                animate(900)
+            ]),
         ])
     ]
 })

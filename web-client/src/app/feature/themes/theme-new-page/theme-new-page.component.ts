@@ -1,4 +1,4 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,9 +11,12 @@ import { ThemeService } from 'src/app/core/theme.service';
     styleUrls: [ './theme-new-page.component.scss' ],
     animations: [
         trigger('fade', [
-            transition('void => *', [
-                style({ opacity: 0 }),
+            state('void', style({ opacity: 0 })),
+            transition('void => *', [      
                 animate(1200)
+            ]),
+            transition('* => void', [
+                animate(400)
             ])
         ])
     ]

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Observable, Subscription } from 'rxjs';
 
 import { IUser } from '../interfaces';
@@ -15,9 +15,14 @@ import { MessageType } from 'src/app/shared/constants/messageType';
     styleUrls: [ './header.component.scss' ],
     animations: [
         trigger('fade', [
+            state('void', style({ opacity: 0 })),
+
             transition('void => *', [
-                style({ opacity: 0 }),
                 animate(1200)
+            ]),
+            
+            transition('* => void', [
+                animate(400)
             ])
         ])
     ]

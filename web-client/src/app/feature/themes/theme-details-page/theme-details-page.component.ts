@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { BehaviorSubject, Observable, combineLatest, mergeMap } from 'rxjs';
 
 import { IPost, ITheme, IUser } from 'src/app/core/interfaces';
@@ -17,10 +17,10 @@ import { PostService } from 'src/app/core/post.service';
     styleUrls: [ './theme-details-page.component.scss' ],
     animations: [
         trigger('fade', [
+            state('void', style({ opacity: 0 })),
             transition('void => *', [
-                style({ opacity: 0 }),
-                animate(1200)
-            ])
+                animate('0.9s 0.1s ease-in-out')
+            ]),
         ])
     ]
 })

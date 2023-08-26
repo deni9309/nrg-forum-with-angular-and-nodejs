@@ -29,7 +29,7 @@
     </ng-container>
 
     <ng-container *ngIf="isEditMode">
-        <form #form="ngForm"
+        <form #form="ngForm" @fade
               (ngSubmit)="saveProfileHandler(form)">
             <div class="input-group">
                 <p>Username: </p>

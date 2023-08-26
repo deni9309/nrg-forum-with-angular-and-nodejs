@@ -58,7 +58,7 @@ form.disabled {
 
 .profile form input:not(input[type="file"]),
 .profile form input:disabled {
-    padding: 0.2em;
+    padding: 0.3em;
     min-width: 300px;
     max-width: 350px;
     border-radius: 2px;
@@ -151,6 +151,11 @@ form .input-error {
         min-width: 320px;
         max-width: 700px;
     }
+
+.profile form input:not(input[type="file"]),
+.profile form input:disabled {
+    padding: 0.3em;
+}
 
     form.disabled .input-group {
         min-width: none;

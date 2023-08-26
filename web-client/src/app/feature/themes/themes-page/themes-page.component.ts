@@ -1,4 +1,4 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -10,9 +10,8 @@ import { AuthService } from 'src/app/auth.service';
     styleUrls: [ './themes-page.component.scss' ],
     animations: [
         trigger('fade', [
-            //   state(),
-            transition('void => *', [
-                style({ opacity: 0 }),
+            state('void', style({ opacity: 0 })),
+            transition('void <=> *', [
                 animate(1200)
             ])
         ])
