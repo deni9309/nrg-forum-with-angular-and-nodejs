@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { BehaviorSubject, Observable, combineLatest, mergeMap } from 'rxjs';
 
 import { IPost, ITheme, IUser } from 'src/app/core/interfaces';
@@ -8,12 +10,19 @@ import { AuthService } from 'src/app/auth.service';
 import { MessageBusService } from 'src/app/core/message-bus.service';
 import { MessageType } from 'src/app/shared/constants/messageType';
 import { PostService } from 'src/app/core/post.service';
-import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'app-theme-details-page',
     templateUrl: './theme-details-page.component.html',
-    styleUrls: [ './theme-details-page.component.scss' ]
+    styleUrls: [ './theme-details-page.component.scss' ],
+    animations: [
+        trigger('fade', [
+            transition('void => *', [
+                style({ opacity: 0 }),
+                animate(1200)
+            ])
+        ])
+    ]
 })
 export class ThemeDetailsPageComponent implements OnInit {
     @ViewChild('form') form: NgForm;

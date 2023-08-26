@@ -1,7 +1,8 @@
 <!-- theme details  -->
 <div *ngIf="theme">
     <div *ngIf="!!theme; else loadingIndicator"
-         class="theme-content">
+         class="theme-content"
+         @fade>
 
         <article class="theme-title">
             <div class="theme-name-wrapper">
@@ -16,9 +17,11 @@
                     <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
                     <ng-container *ngIf="(isLoggedIn$ | async)">
                         <button (click)="subscribe()"
+                                @fade
                                 *ngIf="canSubscribe"
                                 class="subscribe">Subscribe</button>
                         <button (click)="unsubscribe()"
+                                @fade
                                 *ngIf="!canSubscribe"
                                 class="unsubscribe">Unsubscribe</button>
                     </ng-container>
@@ -47,7 +50,8 @@
             <footer class="footer">
                 <ng-container *ngIf="(isLoggedIn$ | async)">
                     <ng-container *ngIf="!canLikeThemePost(post)">
-                        <div class="like-group">
+                        <div class="like-group"
+                             @fade>
                             <span class="liked-info">You already <i class="fas fa-heart"></i> this.</span>
                             <span class="dislike"
                                   (click)="dislike(post)">Remove like</span>
@@ -55,7 +59,7 @@
                     </ng-container>
 
                     <ng-container *ngIf="canLikeThemePost(post)">
-                        <div class="like-group">
+                        <div class="like-group" @fade>
                             <span class="like"
                                   (click)="like(post)">Like this</span>
                         </div>
@@ -73,7 +77,7 @@
 
                 <form #form="ngForm"
                       (ngSubmit)="createThemePost(form)">
-                    <textarea [class.input-error]="postText.touched && postText.invalid"
+                    <textarea [class.input-error]="postText.touched && postText.invalid" @fade
                               name="postText"
                               id="postText"
                               cols="30"
@@ -84,15 +88,15 @@
                               minlength="3">
                     </textarea>
                     <ng-container *ngIf="postText.touched && postText.invalid">
-                        <p class="error"
+                        <p class="error" @fade
                            *ngIf="postText.errors?.['required']">Your post must have content!</p>
-                        <p class="error"
+                        <p class="error" @fade
                            *ngIf="postText.errors?.['minlength']">Post content must be at least 3
                             characters long!
                         </p>
                     </ng-container>
 
-                    <button>Post</button>
+                    <button [disabled]="form.invalid" @fade>Post</button>
                 </form>
 
             </div>

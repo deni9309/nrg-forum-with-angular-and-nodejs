@@ -1,18 +1,21 @@
 <form [formGroup]="form"
       id="login"
       (ngSubmit)="loginHandler()"
-      class="login">
+      class="login"
+      @fade>
 
     <fieldset>
         <div class="header-background">
             <span>Login</span>
         </div>
         <p *ngIf="errorMessage"
-           class="error">{{errorMessage}}</p>
+           class="error"
+           @fade>{{errorMessage}}</p>
 
         <p class="field">
             <label for="email"><span><i class="fas fa-envelope"></i></span></label>
             <input [class.input-error]="form.get('email')?.touched && form.get('email')?.invalid"
+                   @fade
                    type="text"
                    name="email"
                    id="email"
@@ -21,14 +24,17 @@
         </p>
         <ng-container *ngIf="form.get('email')?.touched">
             <p class="error"
+               @fade
                *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
             <p class="error"
+               @fade
                *ngIf="form.get('email')?.errors?.['emailValidator']">Email is not valid!</p>
         </ng-container>
 
         <p class="field">
             <label for="password"><span><i class="fas fa-lock"></i></span></label>
             <input [class.input-error]="form.get('password')?.touched && form.get('password')?.invalid"
+                   @fade
                    type="password"
                    name="password"
                    id="password"
@@ -37,14 +43,17 @@
         </p>
         <ng-container *ngIf="form.get('password')?.touched">
             <p class="error"
+               @fade
                *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
             <p class="error"
+               @fade
                *ngIf="form.get('password')?.errors?.['minlength']">Password must be at least
                 {{form.get('password')?.errors?.['minlength'].requiredLength}} characters!
             </p>
         </ng-container>
 
-        <button [disabled]="form.invalid">Login</button>
+        <button [disabled]="form.invalid"
+                @fade>Login</button>
 
         <p class="text-center">Don't have an account yet? <a routerLink="/auth/register">Register</a></p>
 

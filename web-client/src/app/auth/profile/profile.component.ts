@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 import { DEFAULT_EMAIL_DOMAINS } from '../../shared/constants/validation-constants';
 import { IUser } from 'src/app/core/interfaces';
@@ -9,7 +10,14 @@ import { UserService } from 'src/app/core/user.service';
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
-    styleUrls: [ './profile.component.scss' ]
+    styleUrls: [ './profile.component.scss' ],
+    animations: [
+        trigger('fade', [
+            transition('void => *', [
+                style({ opacity: 0 }),
+                animate(1200) ])
+        ])
+    ]
 })
 export class ProfileComponent implements OnInit {
     @ViewChild('form') form: NgForm;

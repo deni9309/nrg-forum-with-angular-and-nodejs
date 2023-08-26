@@ -68,7 +68,7 @@ form.login {
 }
 
 .login i {
-border: 1px solid rgb(214, 214, 214);
+    border: 1px solid rgb(214, 214, 214);
     border-right: none;
     padding: 0.55em;
     border-top-left-radius: 0.3em;
@@ -103,7 +103,8 @@ p.error {
 }
 
 .login .input-error {
-    border-left-color: red;
+    border: 1px solid rgba(255, 0, 0, 0.9);
+    border-left: 0.3em solid rgba(255, 0, 0, 0.9);
 }
 
 @media screen and (min-width: 801px) {

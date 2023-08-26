@@ -1,6 +1,8 @@
-<form [formGroup]="form" id="register"
+<form [formGroup]="form"
+      id="register"
       class="register"
-      (ngSubmit)="registerHandler()">
+      (ngSubmit)="registerHandler()"
+      @fade>
 
     <fieldset>
         <div class="header-background">
@@ -10,6 +12,7 @@
         <p class="field">
             <label for="username"><span><i class="fas fa-user"></i></span></label>
             <input [class.input-error]="form.get('username')?.touched && form.get('username')?.invalid"
+                   @fade
                    type="text"
                    name="username"
                    id="username"
@@ -18,8 +21,10 @@
         </p>
         <ng-container *ngIf="form.get('username')?.touched">
             <p class="error"
+               @fade
                *ngIf="form.get('username')?.errors?.['required']">Username is required!</p>
             <p class="error"
+               @fade
                *ngIf="form.get('username')?.errors?.['minlength']">Username must be at least
                 {{form.get('username')?.errors?.['minlength'].requiredLength}} characters!
             </p>
@@ -28,6 +33,7 @@
         <p class="field">
             <label for="email"><span><i class="fas fa-envelope"></i></span></label>
             <input [class.input-error]="form.get('email')?.touched && form.get('email')?.invalid"
+                   @fade
                    type="text"
                    name="email"
                    id="email"
@@ -36,8 +42,10 @@
         </p>
         <ng-container *ngIf="form.get('email')?.touched">
             <p class="error"
+               @fade
                *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
             <p class="error"
+               @fade
                *ngIf="form.get('email')?.errors?.['emailValidator']">Email is not valid!</p>
         </ng-container>
 
@@ -54,6 +62,7 @@
             <p class="field">
                 <label for="password"><span><i class="fas fa-lock"></i></span></label>
                 <input [class.input-error]="getPass.touched && getPass.invalid"
+                       @fade
                        type="password"
                        name="password"
                        id="password"
@@ -62,14 +71,17 @@
             </p>
             <ng-container *ngIf="getPass.touched">
                 <p class="error"
+                   @fade
                    *ngIf="getPass.errors?.['required']">Password is required!</p>
                 <p class="error"
+                   @fade
                    *ngIf="getPass.errors?.['minlength']">Password must be at least 5 characters!</p>
             </ng-container>
 
             <p class="field">
                 <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
                 <input [class.input-error]="getRePass.touched && getRePass.invalid"
+                       @fade
                        type="password"
                        name="rePassword"
                        id="rePassword"
@@ -78,6 +90,7 @@
             </p>
             <ng-container *ngIf="getRePass.touched">
                 <p class="error"
+                   @fade
                    *ngIf="form.get('passGroup')?.errors?.['matchPasswordsValidator']
                         || getRePass.errors?.['required']">
                     Repeat Password does not match password!
@@ -85,7 +98,8 @@
             </ng-container>
         </ng-container>
 
-        <button [disabled]="form.invalid">Create Account</button>
+        <button [disabled]="form.invalid"
+                @fade>Create Account</button>
 
         <p class="text-center">Have an account? <a routerLink="/auth/login">Log In</a></p>
 

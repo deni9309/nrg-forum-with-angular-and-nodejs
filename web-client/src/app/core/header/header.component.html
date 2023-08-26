@@ -1,17 +1,17 @@
-<header>
+<header @fade>
     <div class="mini-navbar-wrap">
         <div class="logo-wrap">
             <p class="logo">NRG<span>forum</span></p>
         </div>
         <div class="mini-navbar"
-             *ngIf="!(isLoggedIn$ |async)">
+             *ngIf="!(isLoggedIn$ | async)">
             <ul>
                 <li><a routerLink="/auth/login"><i class="fas fa-key"></i> Login</a></li>
                 <li><a routerLink="/auth/register"><i class="fas fa-user-plus"></i> Register</a></li>
             </ul>
         </div>
         <div class="mini-navbar"
-             *ngIf="(isLoggedIn$ |async)">
+             *ngIf="(isLoggedIn$ | async)">
             <ul>
                 <li><a routerLink="/auth/profile"><i class="fas fa-user-alt"></i> {{(currentUser$ | async).username}}'s Profile</a></li>
                 <li><a href="javascript:void(0);"

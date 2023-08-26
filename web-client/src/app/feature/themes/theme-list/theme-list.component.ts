@@ -62,9 +62,7 @@ export class ThemeListComponent implements OnInit {
 
     fnPageReset(n: number) {
         this.searchControl.valueChanges.subscribe(value => {
-            if (value) {
-                this.currentPage = n;
-            }
+            if (value) { this.currentPage = n; }
         });
     }
 

@@ -1,11 +1,13 @@
-<div *ngIf="profileDetails" class="profile" id="profile"><img src="{{profileDetails.profilePicture 
-    ? profileDetails.profilePicture 
-    : 'assets/profile.png'}}"
+<div *ngIf="profileDetails"
+     class="profile"
+     id="profile"
+     @fade>
+    <img src="{{profileDetails.profilePicture ? profileDetails.profilePicture : 'assets/profile.png'}}"
          alt="{{profileDetails.username}}">
     <h3>Your Profile:</h3>
 
     <ng-container *ngIf="!isEditMode && profileDetails">
-        <form class="disabled">
+        <form class="disabled" @fade>
             <div class="input-group">
                 <p>Username: </p><input value="{{profileDetails.username}}"
                        disabled />
@@ -21,7 +23,8 @@
             </div>
         </form>
         <div class="button-group">
-            <button (click)="enterEditMode()">Edit</button>
+            <button (click)="enterEditMode()"
+                    @fade>Edit</button>
         </div>
     </ng-container>
 
@@ -31,6 +34,7 @@
             <div class="input-group">
                 <p>Username: </p>
                 <input [class.input-error]="username.touched && username.invalid"
+                       @fade
                        type="text"
                        name="username"
                        id="username"
@@ -41,8 +45,10 @@
             </div>
             <ng-container *ngIf="username.touched">
                 <p class="error"
+                   @fade
                    *ngIf="username.errors?.['required']">Username is required!</p>
                 <p class="error"
+                   @fade
                    *ngIf="username.errors?.['minlength']">Username must be at least 5
                     characters long!
                 </p>
@@ -51,6 +57,7 @@
             <div class="input-group">
                 <p>Email: </p>
                 <input [class.input-error]="email.touched && email.invalid"
+                       @fade
                        type="email"
                        name="email"
                        id="email"
@@ -61,8 +68,10 @@
             </div>
             <ng-container *ngIf="email.touched">
                 <p class="error"
+                   @fade
                    *ngIf="email.errors?.['required']">Email is required!</p>
                 <p class="error"
+                   @fade
                    *ngIf="email.errors?.['emailValidator']">Email is not valid!</p>
             </ng-container>
 
@@ -83,9 +92,11 @@
             </div>
             <div class="button-group">
                 <button class="red-button"
-                        (click)="toggleEditMode()">Cancel</button>
+                        (click)="toggleEditMode()"
+                        @fade>Cancel</button>
                 <button [disabled]="form.invalid"
-                        class="green-button">Save</button>
+                        class="green-button"
+                        @fade>Save</button>
             </div>
         </form>
     </ng-container>

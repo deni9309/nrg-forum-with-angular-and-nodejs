@@ -11,7 +11,7 @@
     justify-content: center;
     margin-top: 2em;
     margin-bottom: 2em;
- 
+
     border: 1px solid rgb(219, 219, 219);
     border-radius: 4px;
     background-color: hsla(0, 0%, 100%, 0.6);
@@ -29,8 +29,8 @@
     margin: auto;
     display: block;
     border-radius: 2px;
-        padding: 0;
-        border-radius: 2px;
+    padding: 0;
+    border-radius: 2px;
 }
 
 .profile form {
@@ -91,8 +91,8 @@ form.disabled .input-group p {
 }
 
 button:disabled {
-    color: #e9ecef;
-    background-color: #ccc;
+    color: whitesmoke;
+    background-color: lightgray;
     cursor: not-allowed;
 }
 
@@ -109,6 +109,7 @@ button:disabled {
 .red-button:hover {
     background-color: rgba(195, 0, 0, 0.7);
 }
+
 .green-button:hover {
     background-color: rgba(0, 102, 0, 0.6);
 }
@@ -130,7 +131,8 @@ p.error {
 }
 
 form .input-error {
-    border-left-color: rgba(255, 0, 0, 0.9);
+    border: 1px solid rgba(255, 0, 0, 0.9);
+    border-left: 0.3em solid rgba(255, 0, 0, 0.9);
 }
 
 @media screen and (max-width: 800px) {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 import { emailValidator } from '../validators/emailValidator';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants/validation-constants';
@@ -11,7 +12,15 @@ import { AuthService } from 'src/app/auth.service';
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
-    styleUrls: [ './register.component.scss' ]
+    styleUrls: [ './register.component.scss' ],
+    animations: [
+        trigger('fade', [
+            transition('void => *', [
+                style({ opacity: 0 }),
+                animate(1200)
+            ])
+        ])
+    ]
 })
 export class RegisterComponent {
     // validDomains = DEFAULT_EMAIL_DOMAINS; use when working with template driven forms

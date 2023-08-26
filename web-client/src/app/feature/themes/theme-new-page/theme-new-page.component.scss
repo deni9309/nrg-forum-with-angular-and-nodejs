@@ -131,7 +131,8 @@ p.error {
 
 .new-theme-title .input-error,
 .new-theme-content textarea.input-error {
-    border-left-color: rgba(255, 0, 0, 0.9);
+    border: 1px solid rgba(255, 0, 0, 0.9);
+    border-left: 0.3em solid rgba(255, 0, 0, 0.9);
 }
 
 @media screen and (max-width: 800px) {

@@ -17,7 +17,7 @@ export class MessageBusService {
         this._messageQueue$$.next(message);
     }
 
-    clear(): void{
+    clear(): void {
         this._messageQueue$$.next(undefined);
     }
 }

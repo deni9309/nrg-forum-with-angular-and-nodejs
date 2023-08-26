@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Observable, Subscription } from 'rxjs';
 
 import { IUser } from '../interfaces';
@@ -7,10 +8,19 @@ import { AuthService } from 'src/app/auth.service';
 import { MessageBusService } from '../message-bus.service';
 import { MessageType } from 'src/app/shared/constants/messageType';
 
+
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
-    styleUrls: [ './header.component.scss' ]
+    styleUrls: [ './header.component.scss' ],
+    animations: [
+        trigger('fade', [
+            transition('void => *', [
+                style({ opacity: 0 }),
+                animate(1200)
+            ])
+        ])
+    ]
 })
 export class HeaderComponent implements OnInit, OnDestroy {
     currentUser$: Observable<IUser> = this.authService.user$;
@@ -59,4 +69,3 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.subscription.unsubscribe();
     }
 }
-
