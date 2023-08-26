@@ -1,7 +1,9 @@
 <div class="themes-wrapper">
     <form class="filter-form">
         <p>
-            <label for="search-term"><span><i id="search" class="fas fa-search" title="Start typing to filter the results"></i></span></label>
+            <label for="search-term"><span><i id="search"
+                       class="fas fa-search"
+                       title="Start typing to filter the results"></i></span></label>
             <input type="text"
                    id="search-term"
                    name="search-term"
@@ -9,24 +11,35 @@
                    title="Start typing to filter the results"
                    [formControl]="searchControl" />
         </p>
-        <div class="pagination">
-            <a href="#"><i class="fas fa-angle-double-left"></i></a>
-            <a href="#">1</a>
-            <a [class.active]="isActive" href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#"><i class="fas fa-angle-double-right"></i></a>
+
+        <div class="pagination"
+             *ngIf="totalResultsCount>0">
+            <button [disabled]="currentPage === 0"
+                    (click)="goToPreviousPage()"
+                    class="pagination-btn"><i class="fas fa-angle-left"></i></button>
+
+            <span>
+                Showing {{currentPage * pageSize + 1}}-{{(currentPage + 1) * pageSize > totalResultsCount
+                ? totalResultsCount
+                : (currentPage + 1) * pageSize}}
+                of {{totalResultsCount}} results
+            </span>
+
+            <button [disabled]="isNextButtonDisabled()"
+                    (click)="goToNextPage()"
+                    class="pagination-btn"><i class="fas fa-angle-right"></i></button>
         </div>
     </form>
 
     <ng-container *ngIf="themeList">
-        <app-theme-list-item *ngFor="let theme of themeList"
+        <app-theme-list-item *ngFor="let theme of themeList; trackBy: themeTrackBy"
                              [theme]="theme">
         </app-theme-list-item>
 
-        <div *ngIf="themeList.length === 0">No themes found!</div>
+        <p class="no-themes-found"
+           *ngIf="themeList.length === 0">
+            <i class="fas fa-sad-tear fa-2x"></i> No themes found.<br>Why don't you try with different name?
+        </p>
     </ng-container>
     <ng-container *ngIf="!themeList">
         Loading...

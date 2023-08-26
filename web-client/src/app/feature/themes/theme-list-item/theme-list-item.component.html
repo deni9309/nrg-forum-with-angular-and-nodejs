@@ -2,10 +2,9 @@
      class="theme-item-wrapper">
     <div class="theme-item">
         <a [routerLink]="['/themes', theme._id]">
-            <h2 title="{{theme.themeName}}"
-                *ngIf="theme.themeName.length > 35">{{(theme.themeName | slice:0:35) + '...'}}</h2>
-            <h2 title="{{theme.themeName}}"
-                *ngIf="theme.themeName.length <= 25">{{theme.themeName}}</h2>
+            <span class="tooltiptext">{{theme.themeName}}</span>
+            <h2 *ngIf="theme.themeName.length > 35">{{(theme.themeName | slice:0:35) + '...'}}</h2>
+            <h2 *ngIf="theme.themeName.length <= 35">{{theme.themeName}}</h2>
         </a>
         <div class="columns">
             <div>

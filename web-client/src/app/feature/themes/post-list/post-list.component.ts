@@ -11,7 +11,7 @@ export class PostListComponent implements OnInit {
 
     @Input() themeId!: string;
 
-    postList!: IPost[];
+    postList: IPost[];
 
     constructor(private postService: PostService) { }
 
@@ -21,4 +21,7 @@ export class PostListComponent implements OnInit {
         });
     }
 
+    postListTrackBy(index: number, post: IPost) {
+        return post._id;
+    }
 }

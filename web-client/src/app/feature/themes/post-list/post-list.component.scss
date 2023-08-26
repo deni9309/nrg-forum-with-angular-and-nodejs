@@ -1,3 +1,12 @@
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
 
 /* post aside  */
 
@@ -17,8 +26,11 @@ aside {
 }
 
 .aside-theme {
+    position: relative;
     margin: 1rem 0;
     padding: 0.5rem 1em;
+    animation-name: fade;
+    animation-duration: 1s;
 }
 
 h3 {
@@ -43,11 +55,11 @@ h3 {
     cursor: pointer;
 }
 
-.aside-theme a:hover h3{
+.aside-theme a:hover h3 {
     color: orange;
 }
 
-p.time-span{
+p.time-span {
     margin-top: .3em;
     margin-bottom: .3em;
     color: teal;

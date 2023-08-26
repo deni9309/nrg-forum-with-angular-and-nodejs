@@ -14,8 +14,8 @@ function getThemes(req, res, next) {
 }
 
 function getThemesPaginated(req, res, next) {
-    const title = req.query.title || '';
-    const pattern = transformToRegex(title);
+    let title = req.query.title || '';
+    const pattern = transformToRegex(decodeURIComponent(title));
 
     const startIndex = Number(req.query.startIndex) || 0;
     const limit = Number(req.query.limit) || Number.MAX_SAFE_INTEGER;

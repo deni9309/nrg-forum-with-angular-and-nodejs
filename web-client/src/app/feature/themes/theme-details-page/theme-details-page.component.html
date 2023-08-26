@@ -27,7 +27,7 @@
         </article>
 
         <article class="comment"
-                 *ngFor="let post of theme.posts">
+                 *ngFor="let post of theme.posts; trackBy: postTrackBy">
             <header class="header">
                 <p><span>{{post.userId.username}}</span> posted on
                     <time>{{post.created_at | date:'dd MMM yyyy, hh:mm a'}}</time>

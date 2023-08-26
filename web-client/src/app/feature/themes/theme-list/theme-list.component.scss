@@ -23,7 +23,7 @@ p {
     width: 100%;
 }
 
-form i#search{
+form i#search {
     border: 1px solid rgb(214, 214, 214);
     border-right: none;
     padding: 0.55em;
@@ -45,25 +45,42 @@ div.pagination {
 }
 
 .pagination a,
+.pagination-btn,
 a>i {
     width: 36px;
     height: 36px;
-    color: rgb(22, 22, 22);
+    color: rgb(255, 255, 255);
     float: left;
     justify-content: center;
     align-items: center;
     display: flex;
     text-decoration: none;
     border: 1px solid gainsboro;
+    border-radius: 2px;
+}
+
+.pagination-btn:disabled {
+    color: whitesmoke;
+    background-color: lightgray;
+    cursor: not-allowed;
 }
 
 a>i {
     color: gray;
+
 }
 
 .pagination a:first-child {
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
+}
+
+.pagination button:first-child{
+    margin-right: 0.5em;
+}
+
+.pagination button:last-of-type{
+    margin-left: 0.5em;
 }
 
 .pagination a:last-child {
@@ -101,6 +118,31 @@ p {
     margin: 0;
 }
 
+p.no-themes-found{
+    margin: auto;
+    text-align: center;
+    padding: 2em;
+    font-size: 1.5rem;
+}
+
+p.no-themes-found i{
+    margin-right: 0.2em;
+    color: gainsboro;
+}
+
 .theme-title {
     padding: 0;
+}
+
+@media screen and (max-width: 800px) {
+    p.no-themes-found{
+    font-size: 1.2rem;
+    padding: inherit 0.3em;
+    margin:  0;
+  }
+  
+    p.no-themes-found i {
+            margin-right: 0.1em;
+          
+    }
 }

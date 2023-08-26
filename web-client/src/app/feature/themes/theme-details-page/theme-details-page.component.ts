@@ -122,5 +122,9 @@ export class ThemeDetailsPageComponent implements OnInit {
             }
         });
     }
+
+    postTrackBy(index: number, post: IPost) {
+        return post._id;
+    }
 }
 

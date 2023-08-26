@@ -1,6 +1,6 @@
 <div class="container">
     <div *ngIf="postList">
-        <div *ngFor="let post of postList"
+        <div *ngFor="let post of postList; trackBy: postListTrackBy"
              class="aside-theme">
             <a [routerLink]="['/themes', post.themeId._id]" title="Read More">
                 <h3>{{post.themeId.themeName}}</h3>

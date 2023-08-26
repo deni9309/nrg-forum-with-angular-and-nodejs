@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { IPost, ITheme } from './interfaces';
+import { IPost, ITheme, PaginatedResponse } from './interfaces';
 import { environment } from '../../environments/environment.development';
 
 const { apiUrl } = environment;
@@ -18,6 +18,23 @@ export class ThemeService {
             encodedSearch = encodeURIComponent(searchTerm)
         }
         return this.http.get<ITheme[]>(`${apiUrl}/themes?title=${encodedSearch}`);
+    }
+
+    loadThemePaginatedList(searchTerm: string = '', startIndex: number = 0, limit: number): Observable<PaginatedResponse<ITheme>> {
+        let encodedSearch = searchTerm;
+        if (searchTerm !== '') {
+            encodedSearch = encodeURIComponent(searchTerm);
+        }
+
+        return this.http.get<PaginatedResponse<ITheme>>(`${apiUrl}/themes/pages`, {
+            params: new HttpParams({
+                fromObject: {
+                    title: encodedSearch,
+                    startIndex,
+                    limit
+                }
+            })
+        });
     }
 
     loadThemeById(id: string): Observable<ITheme<IPost>> {
