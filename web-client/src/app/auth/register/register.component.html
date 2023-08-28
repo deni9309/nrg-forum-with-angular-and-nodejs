@@ -9,93 +9,105 @@
             <span>Register</span>
         </div>
 
-        <p class="field">
-            <label for="username"><span><i class="fas fa-user"></i></span></label>
-            <input [class.input-error]="form.get('username')?.touched && form.get('username')?.invalid"
-                   @fade
-                   type="text"
-                   name="username"
-                   id="username"
-                   placeholder="Johny"
-                   formControlName="username" />
-        </p>
-        <ng-container *ngIf="form.get('username')?.touched">
-            <p class="error"
-                @slide
-               *ngIf="form.get('username')?.errors?.['required']">Username is required!</p>
-            <p class="error"
-                @slide
-               *ngIf="form.get('username')?.errors?.['minlength']">Username must be at least
-                {{form.get('username')?.errors?.['minlength'].requiredLength}} characters!
-            </p>
-        </ng-container>
-
-        <p class="field">
-            <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-            <input [class.input-error]="form.get('email')?.touched && form.get('email')?.invalid"
-                   @fade
-                   type="text"
-                   name="email"
-                   id="email"
-                   placeholder="john.doe@gmail.com"
-                   formControlName="email" /> <!-- [appEmail]="validDomains" -->
-        </p>
-        <ng-container *ngIf="form.get('email')?.touched">
-            <p class="error"
-               @slide
-               *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
-            <p class="error"
-                @slide
-               *ngIf="form.get('email')?.errors?.['emailValidator']">Email is not valid!</p>
-        </ng-container>
-
-        <p class="field">
-            <label for="tel"><span><i class="fas fa-phone"></i></span></label>
-            <input type="text"
-                   name="tel"
-                   id="tel"
-                   placeholder="885 888 888"
-                   formControlName="tel" />
-        </p>
-
-        <ng-container formGroupName="passGroup">
+        <div class="field-group"
+             id="first">
             <p class="field">
-                <label for="password"><span><i class="fas fa-lock"></i></span></label>
-                <input [class.input-error]="getPass.touched && getPass.invalid"
+                <label for="username"><span><i class="fas fa-user"></i></span></label>
+                <input [class.input-error]="form.get('username')?.touched && form.get('username')?.invalid"
                        @fade
-                       type="password"
-                       name="password"
-                       id="password"
-                       placeholder="******"
-                       formControlName="password" />
+                       type="text"
+                       name="username"
+                       id="username"
+                       placeholder="Johny"
+                       formControlName="username" />
             </p>
-            <ng-container *ngIf="getPass.touched">
+            <ng-container *ngIf="form.get('username')?.touched">
                 <p class="error"
-                    @slide
-                   *ngIf="getPass.errors?.['required']">Password is required!</p>
+                   @slide
+                   *ngIf="form.get('username')?.errors?.['required']">Username is required!</p>
                 <p class="error"
-                    @slide
-                   *ngIf="getPass.errors?.['minlength']">Password must be at least 5 characters!</p>
-            </ng-container>
-
-            <p class="field">
-                <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
-                <input [class.input-error]="getRePass.touched && getRePass.invalid"
-                       @fade
-                       type="password"
-                       name="rePassword"
-                       id="rePassword"
-                       placeholder="******"
-                       formControlName="rePassword" />
-            </p>
-            <ng-container *ngIf="getRePass.touched">
-                <p class="error"
-                    @slide
-                   *ngIf="form.get('passGroup')?.errors?.['matchPasswordsValidator']
-                        || getRePass.errors?.['required']">
-                    Repeat Password does not match password!
+                   @slide
+                   *ngIf="form.get('username')?.errors?.['minlength']">Username must be at least
+                    {{form.get('username')?.errors?.['minlength'].requiredLength}} characters!
                 </p>
             </ng-container>
+        </div>
+
+        <div class="field-group">
+            <p class="field">
+                <label for="email"><span><i class="fas fa-envelope"></i></span></label>
+                <input [class.input-error]="form.get('email')?.touched && form.get('email')?.invalid"
+                       @fade
+                       type="text"
+                       name="email"
+                       id="email"
+                       placeholder="john.doe@gmail.com"
+                       formControlName="email" /> <!-- [appEmail]="validDomains" -->
+            </p>
+            <ng-container *ngIf="form.get('email')?.touched">
+                <p class="error"
+                   @slide
+                   *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
+                <p class="error"
+                   @slide
+                   *ngIf="form.get('email')?.errors?.['emailValidator']">Email is not valid!</p>
+            </ng-container>
+        </div>
+
+        <div class="field-group">
+            <p class="field">
+                <label for="tel"><span><i class="fas fa-phone"></i></span></label>
+                <input type="text"
+                       name="tel"
+                       id="tel"
+                       placeholder="885 888 888"
+                       formControlName="tel" />
+            </p>
+        </div>
+
+        <ng-container formGroupName="passGroup">
+            <div class="field-group">
+                <p class="field">
+                    <label for="password"><span><i class="fas fa-lock"></i></span></label>
+                    <input [class.input-error]="getPass.touched && getPass.invalid"
+                           @fade
+                           type="password"
+                           name="password"
+                           id="password"
+                           placeholder="******"
+                           formControlName="password" />
+                </p>
+                <ng-container *ngIf="getPass.touched">
+                    <p class="error"
+                       @slide
+                       *ngIf="getPass.errors?.['required']">Password is required!</p>
+                    <p class="error"
+                       @slide
+                       *ngIf="getPass.errors?.['minlength']">Password must be at least 5 characters!</p>
+                </ng-container>
+            </div>
+
+            <div class="field-group"
+                 id="last">
+                <p class="field">
+                    <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
+                    <input [class.input-error]="getRePass.touched && getRePass.invalid"
+                           @fade
+                           type="password"
+                           name="rePassword"
+                           id="rePassword"
+                           placeholder="******"
+                           formControlName="rePassword" />
+                </p>
+                <ng-container *ngIf="getRePass.touched">
+                    <p class="error"
+                       @slide
+                       *ngIf="form.get('passGroup')?.errors?.['matchPasswordsValidator']
+                        || getRePass.errors?.['required']">
+                        Repeat Password does not match password!
+                    </p>
+                </ng-container>
+            </div>
         </ng-container>
 
         <button [disabled]="form.invalid"

@@ -12,45 +12,49 @@
            class="error"
            @slide>{{errorMessage}}</p>
 
-        <p class="field">
-            <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-            <input [class.input-error]="form.get('email')?.touched && form.get('email')?.invalid"
-                   @fade
-                   type="text"
-                   name="email"
-                   id="email"
-                   placeholder="john.doe@gmail.com"
-                   formControlName="email" />
-        </p>
-        <ng-container *ngIf="form.get('email')?.touched">
-            <p class="error"
-            @slide
-               *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
-            <p class="error"
-             @slide
-               *ngIf="form.get('email')?.errors?.['emailValidator']">Email is not valid!</p>
-        </ng-container>
-
-        <p class="field">
-            <label for="password"><span><i class="fas fa-lock"></i></span></label>
-            <input [class.input-error]="form.get('password')?.touched && form.get('password')?.invalid"
-                   @fade
-                   type="password"
-                   name="password"
-                   id="password"
-                   placeholder="******"
-                   formControlName="password" />
-        </p>
-        <ng-container *ngIf="form.get('password')?.touched">
-            <p class="error"  
-                @slide
-               *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
-            <p class="error"
-             @slide
-               *ngIf="form.get('password')?.errors?.['minlength']">Password must be at least
-                {{form.get('password')?.errors?.['minlength'].requiredLength}} characters!
+        <div class="field-group" id="first">
+            <p class="field">
+                <label for="email"><span><i class="fas fa-envelope"></i></span></label>
+                <input [class.input-error]="form.get('email')?.touched && form.get('email')?.invalid"
+                       @fade
+                       type="text"
+                       name="email"
+                       id="email"
+                       placeholder="john.doe@gmail.com"
+                       formControlName="email" />
             </p>
-        </ng-container>
+            <ng-container *ngIf="form.get('email')?.touched">
+                <p class="error"
+                   @slide
+                   *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
+                <p class="error"
+                   @slide
+                   *ngIf="form.get('email')?.errors?.['emailValidator']">Email is not valid!</p>
+            </ng-container>
+        </div>
+
+        <div class="field-group" id="last">
+            <p class="field">
+                <label for="password"><span><i class="fas fa-lock"></i></span></label>
+                <input [class.input-error]="form.get('password')?.touched && form.get('password')?.invalid"
+                       @fade
+                       type="password"
+                       name="password"
+                       id="password"
+                       placeholder="******"
+                       formControlName="password" />
+            </p>
+            <ng-container *ngIf="form.get('password')?.touched">
+                <p class="error"
+                   @slide
+                   *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
+                <p class="error"
+                   @slide
+                   *ngIf="form.get('password')?.errors?.['minlength']">Password must be at least
+                    {{form.get('password')?.errors?.['minlength'].requiredLength}} characters!
+                </p>
+            </ng-container>
+        </div>
 
         <button [disabled]="form.invalid"
                 @fade>Login</button>

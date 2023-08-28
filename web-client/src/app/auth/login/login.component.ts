@@ -23,11 +23,11 @@ import { MessageType } from 'src/app/shared/constants/messageType';
 
         trigger('slide', [
             transition(':enter', [
-                style({ opacity: 0, transform: 'translateX(-20%)' }),
-                animate('500ms  ease-out', style({ opacity: 1, transform: 'none' }))
+                style({ opacity: 0, transform: 'translateX(10%)' }),
+                animate('700ms 900ms ease-out', style({ opacity: 1, transform: 'none' }))
             ]),
             transition(':leave', [
-                animate('300ms ease-out', style({ opacity: 0, transform: 'translateX(-20%)' }))
+                animate('700ms ease', style({ opacity: 0, transform: 'translateX(10%)' }))
             ])
         ])
     ]

@@ -7,19 +7,27 @@
     <h3>Your Profile:</h3>
 
     <ng-container *ngIf="!isEditMode && profileDetails">
-        <form class="disabled" @fade>
-            <div class="input-group">
-                <p>Username: </p><input value="{{profileDetails.username}}"
-                       disabled />
+        <form class="disabled"
+              @fade>
+            <div class="field-group"
+                 id="first">
+                <div class="input-group">
+                    <p>Username: </p><input value="{{profileDetails.username}}"
+                           disabled />
+                </div>
             </div>
-            <div class="input-group">
-                <p>Email: </p><input value="{{profileDetails.email}}"
-                       disabled />
+            <div class="field-group">
+                <div class="input-group">
+                    <p>Email: </p><input value="{{profileDetails.email}}"
+                           disabled />
+                </div>
             </div>
-            <div class="input-group">
-                <p>Phone: </p>
-                <input value="{{profileDetails.tel}}"
-                       disabled />
+            <div class="field-group">
+                <div class="input-group">
+                    <p>Phone: </p>
+                    <input value="{{profileDetails.tel}}"
+                           disabled />
+                </div>
             </div>
         </form>
         <div class="button-group">
@@ -29,69 +37,82 @@
     </ng-container>
 
     <ng-container *ngIf="isEditMode">
-        <form #form="ngForm" @fade
+        <form #form="ngForm"
+              @fade
               (ngSubmit)="saveProfileHandler(form)">
-            <div class="input-group">
-                <p>Username: </p>
-                <input [class.input-error]="username.touched && username.invalid"
-                       @fade
-                       type="text"
-                       name="username"
-                       id="username"
-                       ngModel
-                       #username="ngModel"
-                       required
-                       minlength="5" />
+            <div class="field-group"
+                 id="first">
+                <div class="input-group">
+                    <p>Username: </p>
+                    <input [class.input-error]="username.touched && username.invalid"
+                           @fade
+                           type="text"
+                           name="username"
+                           id="username"
+                           ngModel
+                           #username="ngModel"
+                           required
+                           minlength="5" />
+                </div>
+                <ng-container *ngIf="username.touched">
+                    <p class="error"
+                       @slide
+                       *ngIf="username.errors?.['required']">Username is required!</p>
+                    <p class="error"
+                       @slide
+                       *ngIf="username.errors?.['minlength']">Username must be at least 5
+                        characters long!
+                    </p>
+                </ng-container>
             </div>
-            <ng-container *ngIf="username.touched">
-                <p class="error"
-                   @slide
-                   *ngIf="username.errors?.['required']">Username is required!</p>
-                <p class="error"
-                   @slide
-                   *ngIf="username.errors?.['minlength']">Username must be at least 5
-                    characters long!
-                </p>
-            </ng-container>
 
-            <div class="input-group">
-                <p>Email: </p>
-                <input [class.input-error]="email.touched && email.invalid"
-                       @fade
-                       type="email"
-                       name="email"
-                       id="email"
-                       ngModel
-                       #email="ngModel"
-                       required
-                       [appEmail]="validDomains" />
+            <div class="field-group">
+                <div class="input-group">
+                    <p>Email: </p>
+                    <input [class.input-error]="email.touched && email.invalid"
+                           @fade
+                           type="email"
+                           name="email"
+                           id="email"
+                           ngModel
+                           #email="ngModel"
+                           required
+                           [appEmail]="validDomains" />
+                </div>
+                <ng-container *ngIf="email.touched">
+                    <p class="error"
+                       @slide
+                       *ngIf="email.errors?.['required']">Email is required!</p>
+                    <p class="error"
+                       @slide
+                       *ngIf="email.errors?.['emailValidator']">Email is not valid!</p>
+                </ng-container>
             </div>
-            <ng-container *ngIf="email.touched">
-                <p class="error"
-                   @slide
-                   *ngIf="email.errors?.['required']">Email is required!</p>
-                <p class="error"
-                   @slide
-                   *ngIf="email.errors?.['emailValidator']">Email is not valid!</p>
-            </ng-container>
 
-            <div class="input-group">
-                <p>Phone: </p>
-                <input type="text"
-                       name="tel"
-                       id="tel"
-                       ngModel
-                       #tel="ngModel" />
+            <div class="field-group">
+                <div class="input-group">
+                    <p>Phone: </p>
+                    <input type="text"
+                           name="tel"
+                           id="tel"
+                           ngModel
+                           #tel="ngModel" />
+                </div>
             </div>
-            <div class="input-group">
-                <p>Profile Picture: </p>
-                <input type="file"
-                       accept="image/png"
-                       id="profile-picture"
-                       (change)="ProfilePictureChangeHandler($event)" />
+
+            <div class="field-group">
+                <div class="input-group">
+                    <p>Profile Picture: </p>
+                    <input type="file"
+                           accept="image/png"
+                           id="profile-picture"
+                           (change)="ProfilePictureChangeHandler($event)" />
+                </div>
             </div>
+
             <div class="button-group">
-                <button type="button" class="red-button"
+                <button type="button"
+                        class="red-button"
                         (click)="toggleEditMode()"
                         @fade>Cancel</button>
                 <button [disabled]="form.invalid"

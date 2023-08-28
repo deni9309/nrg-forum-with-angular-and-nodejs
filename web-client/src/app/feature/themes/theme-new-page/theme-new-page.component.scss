@@ -47,30 +47,22 @@
     margin-bottom: 1em;
 }
 
-.new-theme-title:has(p.error),
-.new-theme-content:has(p.error) {
-    margin-bottom: 0.7rem;
-    overflow: hidden;
-    transition: all 500ms ease-in-out;
-    z-index: 20;
+.new-theme-title {
+    height: 4.4rem;
 }
 
 .new-theme-content {
-    min-height: 100%;
+    position: relative;
+    height: 12rem;
     width: 100%;
-    padding: 0;
-    margin: 0;
 }
 
 .new-theme-content textarea {
-    width: 100%;
+    position: relative;
+    height: 9rem;
+    resize: none;
     padding: 0.5em;
-    margin: 0;
     border-left: 0.3em solid green;
-}
-
-.new-theme-content label {
-    margin-bottom: 0.3em;
 }
 
 .new-theme-title input {
@@ -80,7 +72,6 @@
     padding: 0.3em;
     border-left: 0.3em solid green;
 }
-
 
 /* buttons */
 
@@ -126,15 +117,12 @@ button+button {
 /* errors */
 
 p.error {
+    position: relative;
+    display: inline-flex;
     text-align: left;
-    border-radius: 2px;
     color: red;
     margin-top: 0.3em;
     font-size: 0.8em;
-    position: relative;
-    overflow: hidden;
-    transition: all 500ms ease-in-out;
-    z-index: 20;
 }
 
 .red {

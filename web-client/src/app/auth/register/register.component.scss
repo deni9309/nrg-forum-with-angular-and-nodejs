@@ -16,6 +16,7 @@ form.register {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.219);
     border: 0;
     padding: 4em;
+    min-width: 600px;
     background-color: rgba(255, 255, 255, 0.718);
 }
 
@@ -39,13 +40,14 @@ form.register {
     border-top-left-radius: 2px;
 }
 
-.register p:not(p.error) {
-    padding-bottom: 0;
-    padding-top: 1.9rem;
-    overflow: hidden;
+.field-group {
     position: relative;
-    transition: all 500ms ease-in-out;
-    z-index: 20;
+    overflow: hidden;
+    height: 4.2em;
+}
+
+form div.field-group#first {
+    margin-top: 2.2em;
 }
 
 .register input {
@@ -60,7 +62,8 @@ form.register {
     color: white;
     border: none;
     padding: 0.6em 1.2em;
-    margin-top: 1.9rem;
+    margin-top: 0;
+    margin-bottom: 1em;
     width: 60%;
     outline: none;
 }
@@ -99,40 +102,17 @@ p.text-center {
 /* errors  */
 
 p.error {
-    text-align: left;
-    border-radius: 2px;
-    color: red;
-    font-size: 0.8em;
-    margin-top: 0.3em;
-    margin-bottom: 0;
     position: relative;
-    overflow: hidden;
-    transition: all 500ms ease-in-out;
-    z-index: 20;
-}
-
-.register p.error+p.field {
-    padding-top: .8rem;
-    overflow: hidden;
-    transition: all 500ms ease-in-out;
-    z-index: 20;
+    display: inline-flex;
+    text-align: left;
+    color: red;
+    margin-top: 0.3em;
+    font-size: 0.8em;
 }
 
 .register .input-error {
     border: 1px solid rgba(255, 0, 0, 0.9);
     border-left: 0.3em solid rgba(255, 0, 0, 0.9);
-}
-
-@media screen and (min-width: 801px) {
-    form.register#register {
-        margin-bottom: 1em;
-    }
-
-    form.register#register fieldset {
-        padding: 2em 3em;
-        font-size: 0.9rem;
-        min-width: 450px;
-    }
 }
 
 @media screen and (max-width: 800px) {
@@ -144,6 +124,6 @@ p.error {
     form.register#register fieldset {
         padding: 2em;
         font-size: 0.9rem;
-        min-width: 350px;
+        min-width: 380px;
     }
 }
