@@ -4,7 +4,7 @@
          class="theme-content"
          @fade>
 
-        <article class="theme-title">
+        <article class="theme-title" @slide>
             <div class="theme-name-wrapper">
                 <header class="theme-name">
                     <h2>{{theme.themeName}}</h2>
@@ -59,7 +59,8 @@
                     </ng-container>
 
                     <ng-container *ngIf="canLikeThemePost(post)">
-                        <div class="like-group" @fade>
+                        <div class="like-group"
+                             @fade>
                             <span class="like"
                                   (click)="like(post)">Like this</span>
                         </div>
@@ -77,7 +78,8 @@
 
                 <form #form="ngForm"
                       (ngSubmit)="createThemePost(form)">
-                    <textarea [class.input-error]="postText.touched && postText.invalid" @fade
+                    <textarea [class.input-error]="postText.touched && postText.invalid"
+                              @fade
                               name="postText"
                               id="postText"
                               cols="30"
@@ -88,15 +90,18 @@
                               minlength="3">
                     </textarea>
                     <ng-container *ngIf="postText.touched && postText.invalid">
-                        <p class="error" @fade
+                        <p class="error"
+                           @slide
                            *ngIf="postText.errors?.['required']">Your post must have content!</p>
-                        <p class="error" @fade
+                        <p class="error"
+                           @slide
                            *ngIf="postText.errors?.['minlength']">Post content must be at least 3
                             characters long!
                         </p>
                     </ng-container>
 
-                    <button [disabled]="form.invalid" @fade>Post</button>
+                    <button [disabled]="form.invalid"
+                            @fade>Post</button>
                 </form>
 
             </div>

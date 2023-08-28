@@ -45,10 +45,10 @@
             </div>
             <ng-container *ngIf="username.touched">
                 <p class="error"
-                   @fade
+                   @slide
                    *ngIf="username.errors?.['required']">Username is required!</p>
                 <p class="error"
-                   @fade
+                   @slide
                    *ngIf="username.errors?.['minlength']">Username must be at least 5
                     characters long!
                 </p>
@@ -68,10 +68,10 @@
             </div>
             <ng-container *ngIf="email.touched">
                 <p class="error"
-                   @fade
+                   @slide
                    *ngIf="email.errors?.['required']">Email is required!</p>
                 <p class="error"
-                   @fade
+                   @slide
                    *ngIf="email.errors?.['emailValidator']">Email is not valid!</p>
             </ng-container>
 
@@ -91,7 +91,7 @@
                        (change)="ProfilePictureChangeHandler($event)" />
             </div>
             <div class="button-group">
-                <button class="red-button"
+                <button type="button" class="red-button"
                         (click)="toggleEditMode()"
                         @fade>Cancel</button>
                 <button [disabled]="form.invalid"

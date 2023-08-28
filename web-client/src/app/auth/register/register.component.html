@@ -21,10 +21,10 @@
         </p>
         <ng-container *ngIf="form.get('username')?.touched">
             <p class="error"
-               @fade
+                @slide
                *ngIf="form.get('username')?.errors?.['required']">Username is required!</p>
             <p class="error"
-               @fade
+                @slide
                *ngIf="form.get('username')?.errors?.['minlength']">Username must be at least
                 {{form.get('username')?.errors?.['minlength'].requiredLength}} characters!
             </p>
@@ -42,10 +42,10 @@
         </p>
         <ng-container *ngIf="form.get('email')?.touched">
             <p class="error"
-               @fade
+               @slide
                *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
             <p class="error"
-               @fade
+                @slide
                *ngIf="form.get('email')?.errors?.['emailValidator']">Email is not valid!</p>
         </ng-container>
 
@@ -71,10 +71,10 @@
             </p>
             <ng-container *ngIf="getPass.touched">
                 <p class="error"
-                   @fade
+                    @slide
                    *ngIf="getPass.errors?.['required']">Password is required!</p>
                 <p class="error"
-                   @fade
+                    @slide
                    *ngIf="getPass.errors?.['minlength']">Password must be at least 5 characters!</p>
             </ng-container>
 
@@ -90,7 +90,7 @@
             </p>
             <ng-container *ngIf="getRePass.touched">
                 <p class="error"
-                   @fade
+                    @slide
                    *ngIf="form.get('passGroup')?.errors?.['matchPasswordsValidator']
                         || getRePass.errors?.['required']">
                     Repeat Password does not match password!

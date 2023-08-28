@@ -41,7 +41,11 @@ form.register {
 
 .register p:not(p.error) {
     padding-bottom: 0;
-    padding-top: 1.5rem;
+    padding-top: 1.9rem;
+    overflow: hidden;
+    position: relative;
+    transition: all 500ms ease-in-out;
+    z-index: 20;
 }
 
 .register input {
@@ -56,7 +60,7 @@ form.register {
     color: white;
     border: none;
     padding: 0.6em 1.2em;
-    margin-top: 1.5rem;
+    margin-top: 1.9rem;
     width: 60%;
     outline: none;
 }
@@ -100,6 +104,18 @@ p.error {
     color: red;
     font-size: 0.8em;
     margin-top: 0.3em;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+    transition: all 500ms ease-in-out;
+    z-index: 20;
+}
+
+.register p.error+p.field {
+    padding-top: .8rem;
+    overflow: hidden;
+    transition: all 500ms ease-in-out;
+    z-index: 20;
 }
 
 .register .input-error {

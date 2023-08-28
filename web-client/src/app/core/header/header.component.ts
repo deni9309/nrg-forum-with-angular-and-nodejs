@@ -18,7 +18,7 @@ import { MessageType } from 'src/app/shared/constants/messageType';
             state('void', style({ opacity: 0 })),
 
             transition('void => *', [
-                animate(1200)
+                animate(1000)
             ]),
             
             transition('* => void', [

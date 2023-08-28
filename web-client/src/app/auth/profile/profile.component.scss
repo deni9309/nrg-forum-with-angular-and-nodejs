@@ -40,10 +40,15 @@
 }
 
 .input-group {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: .6rem;
+    overflow: hidden;
+    transition: all 500ms ease-in-out;
+    z-index: 20;
 }
 
 form input {
@@ -62,6 +67,7 @@ form.disabled {
     min-width: 300px;
     max-width: 350px;
     border-radius: 2px;
+    color: teal;
 }
 
 form input[type="file"] {
@@ -71,11 +77,14 @@ form input[type="file"] {
 }
 
 form .input-group p {
+    color: #555555;
     border-bottom: 0;
+    padding-left: .7rem;
     padding-top: .5em;
-    padding-bottom: .5em;
-    text-align: center;
+    padding-bottom: .1em;
+    text-align: left;
     width: 100%;
+    font-size: 0.9rem;
 }
 
 form.disabled .input-group p {
@@ -123,16 +132,28 @@ button:disabled {
 /* errors  */
 
 p.error {
-    display: flex;
-    justify-content: center;
+    text-align: left;
+    border-radius: 2px;
     color: red;
-    padding-top: 0;
+    margin-top: 0.3em;
     font-size: 0.8em;
+    position: relative;
+    overflow: hidden;
+    transition: all 500ms ease-in-out;
+    z-index: 20;
 }
 
 form .input-error {
     border: 1px solid rgba(255, 0, 0, 0.9);
     border-left: 0.3em solid rgba(255, 0, 0, 0.9);
+}
+
+p.error+div.input-group {
+    position: relative;
+    padding-top: .4rem;
+    overflow: hidden;
+    transition: all 500ms ease-in-out;
+    z-index: 20;
 }
 
 @media screen and (max-width: 800px) {
@@ -152,10 +173,10 @@ form .input-error {
         max-width: 700px;
     }
 
-.profile form input:not(input[type="file"]),
-.profile form input:disabled {
-    padding: 0.3em;
-}
+    .profile form input:not(input[type="file"]),
+    .profile form input:disabled {
+        padding: 0.3em;
+    }
 
     form.disabled .input-group {
         min-width: none;

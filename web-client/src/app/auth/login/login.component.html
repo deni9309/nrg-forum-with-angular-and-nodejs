@@ -10,7 +10,7 @@
         </div>
         <p *ngIf="errorMessage"
            class="error"
-           @fade>{{errorMessage}}</p>
+           @slide>{{errorMessage}}</p>
 
         <p class="field">
             <label for="email"><span><i class="fas fa-envelope"></i></span></label>
@@ -24,10 +24,10 @@
         </p>
         <ng-container *ngIf="form.get('email')?.touched">
             <p class="error"
-               @fade
+            @slide
                *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
             <p class="error"
-               @fade
+             @slide
                *ngIf="form.get('email')?.errors?.['emailValidator']">Email is not valid!</p>
         </ng-container>
 
@@ -42,11 +42,11 @@
                    formControlName="password" />
         </p>
         <ng-container *ngIf="form.get('password')?.touched">
-            <p class="error"
-               @fade
+            <p class="error"  
+                @slide
                *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
             <p class="error"
-               @fade
+             @slide
                *ngIf="form.get('password')?.errors?.['minlength']">Password must be at least
                 {{form.get('password')?.errors?.['minlength'].requiredLength}} characters!
             </p>

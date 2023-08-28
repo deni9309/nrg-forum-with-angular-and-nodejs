@@ -1,48 +1,62 @@
 .mainbox {
-    margin: auto;
-    height: 550px;
-    width: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.mainbox* {
+    transition: all 500ms ease-in-out;
+}
+
+.group-err {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p.err,
+p.err2,
+p.far,
+i {
+    padding: 0.2rem;
     position: relative;
-}
-
-.err {
-    color: #95c2de;
-    font-size: 11rem;
-    position: absolute;
-    left: 20%;
-    top: 8%;
-}
-
-.far {
-    position: absolute;
-    font-size: 8.5rem;
-    left: 40%;
-    top: 15%;
+    font-size: 9.5rem;
     color: #95c2de;
 }
 
-.err2 {
-    color: #95c2de;
-    font-size: 11rem;
-    position: absolute;
-    left: 68%;
-    top: 8%;
+i {
+    font-size: 8rem;
 }
 
-.msg {
+p.msg {
+    white-space: pre;
+    position: relative;
     text-align: center;
     font-size: 1.6rem;
-    position: absolute;
-    left: 16%;
-    top: 50%;
-    width: 75%;
+    display: inline;
 }
 
 a {
-    text-decoration: none;
+    font-size: 1.6rem;
+    color: #95c2de;
+}
+
+a:visited {
     color: #95c2de;
 }
 
 a:hover {
     text-decoration: underline;
+    color: teal;
+}
+
+@media screen and (max-width: 800px) {
+
+    div.mainbox {
+       min-height: 100vh;
+       padding: 0 2em;
+       width: 90%;
+    }
 }

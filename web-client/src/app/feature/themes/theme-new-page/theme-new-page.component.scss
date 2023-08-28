@@ -47,6 +47,14 @@
     margin-bottom: 1em;
 }
 
+.new-theme-title:has(p.error),
+.new-theme-content:has(p.error) {
+    margin-bottom: 0.7rem;
+    overflow: hidden;
+    transition: all 500ms ease-in-out;
+    z-index: 20;
+}
+
 .new-theme-content {
     min-height: 100%;
     width: 100%;
@@ -121,8 +129,12 @@ p.error {
     text-align: left;
     border-radius: 2px;
     color: red;
-    padding-top: 0;
+    margin-top: 0.3em;
     font-size: 0.8em;
+    position: relative;
+    overflow: hidden;
+    transition: all 500ms ease-in-out;
+    z-index: 20;
 }
 
 .red {

@@ -39,9 +39,14 @@ form.login {
     border-top-left-radius: 2px;
 }
 
-.login p:not(p.error) {
-    padding-bottom: 0;
-    padding-top: 1.5rem;
+.login p.field {
+    padding-top: 1.9rem;
+    transition: all 1000ms ease-in-out;
+}
+
+.login:not(:has(p.error)) p.field {
+    padding-top: 1.9rem;
+    transition: all 1000ms ease-in-out;
 }
 
 .login input {
@@ -100,6 +105,12 @@ p.error {
     color: red;
     margin-top: 0.3em;
     font-size: 0.8em;
+}
+
+.login p.error:nth-child(odd)+p.field,
+.login p.error:nth-child(even)+p.field {
+    padding-top: 0.6rem;
+    transition: all 1000ms ease-in-out;
 }
 
 .login .input-error {

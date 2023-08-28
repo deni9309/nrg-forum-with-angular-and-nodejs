@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, query, stagger, state, style, transition, trigger } from '@angular/animations';
 
 import { emailValidator } from '../validators/emailValidator';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants/validation-constants';
@@ -16,9 +16,19 @@ import { MessageType } from 'src/app/shared/constants/messageType';
     animations: [
         trigger('fade', [
             state('void', style({ opacity: 0 })),
-            transition('void <=> *', [
-                animate(900)
+            transition('void => *', [
+                animate(1000)
             ]),
+        ]),
+
+        trigger('slide', [
+            transition(':enter', [
+                style({ opacity: 0, transform: 'translateX(-20%)' }),
+                animate('500ms  ease-out', style({ opacity: 1, transform: 'none' }))
+            ]),
+            transition(':leave', [
+                animate('300ms ease-out', style({ opacity: 0, transform: 'translateX(-20%)' }))
+            ])
         ])
     ]
 })
