@@ -4,15 +4,14 @@
          class="theme-content"
          @fade>
 
-        <article class="theme-title" @slide>
-            <div class="theme-name-wrapper">
-                <header class="theme-name">
+        <article class="theme-name-wrapper">
+            <header class="theme-name">
+                <div class="theme-details">
                     <h2>{{theme.themeName}}</h2>
                     <p *ngIf="isOwner"
                        class="display-theme-for-owner"><i class="fas fa-star"></i> Created by you</p>
                     <p>Date: <time>{{theme.created_at | date:'dd MMM yyyy, hh:mm a'}}</time></p>
-                </header>
-
+                </div>
                 <div class="subscribers">
                     <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
                     <ng-container *ngIf="(isLoggedIn$ | async)">
@@ -26,7 +25,7 @@
                                 class="unsubscribe">Unsubscribe</button>
                     </ng-container>
                 </div>
-            </div>
+            </header>
         </article>
 
         <article class="comment"
@@ -91,10 +90,10 @@
                     </textarea>
                     <ng-container *ngIf="postText.touched && postText.invalid">
                         <p class="error"
-                           @slide
+                           @fade
                            *ngIf="postText.errors?.['required']">Your post must have content!</p>
                         <p class="error"
-                           @slide
+                           @fade
                            *ngIf="postText.errors?.['minlength']">Post content must be at least 3
                             characters long!
                         </p>

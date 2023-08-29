@@ -1,7 +1,5 @@
 :host {
     margin: auto;
-    margin-bottom: 2em;
-    display: flex;
 }
 
 /* theme details layout  */
@@ -9,20 +7,17 @@
     display: flex;
     flex-direction: column;
     margin: 2em auto;
-    width: auto;
     min-width: 700px;
     max-width: 80%;
     margin-bottom: 2em;
-    padding: 2em;
+    padding: 1em 2em;
     background-color: rgba(255, 255, 255, 0.622);
 }
 
 /* theme header part */
 
 .theme-name-wrapper {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    position: relative;
     padding: 1em;
     border-radius: 2px;
     margin-top: 1em;
@@ -30,23 +25,36 @@
     background-color: whitesmoke;
 }
 
-article header {
-    width: 100%;
+article .theme-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
 }
 
-article header h2 {
-    font-size: 1.8rem;
-    margin-bottom: 0.3em;
+.theme-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
 }
 
-article header p,
-.subscribers p,
-.subscribers button {
+article header,
+article header p {
     padding: 1em;
 }
 
+article header h2 {
+    font-size: 1.7rem;
+    margin-bottom: 0.3em;
+    position: relative;
+    padding: 0 1em;
+    border-bottom: 1px solid orange;
+}
+
 article header .display-theme-for-owner {
-    padding: 0.5em;
+    width: auto;
+    padding: 0.5rem;
     background-color: rgba(255, 105, 180, 0.148);
     border: 1px dashed hotpink;
     border-radius: 2px;
@@ -58,28 +66,24 @@ article header .display-theme-for-owner {
 
 .subscribers p {
     white-space: pre;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.columns {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.7em;
+    font-size: 0.9rem;
+    color: teal;
 }
 
 .subscribers {
+    flex-basis: 50%;
+    display: inline-flex;
+    border-left: 1px solid orange;
     padding: 1em;
-    flex-basis: 20%;
-    display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: space-around;
+    position: relative;
+    column-gap: 0.5em;
 }
 
 .subscribers button {
-    padding: .5em .8em;
+    position: relative;
+    padding: 0.5rem;
     border: none;
     border-radius: 2px;
     color: white;
@@ -88,10 +92,12 @@ article header .display-theme-for-owner {
 
 .subscribe {
     background-color: rgba(2, 157, 2, 0.6);
+    z-index: 10;
 }
 
 .unsubscribe {
     background-color: rgba(255, 0, 0, 0.7);
+    z-index: 0;
 }
 
 .unsubscribe:hover {
@@ -100,23 +106,6 @@ article header .display-theme-for-owner {
 
 .subscribe:hover {
     background-color: rgba(0, 102, 0, 0.6);
-}
-
-.theme-title {
-    width: 100%;
-}
-
-.theme-name-wrapper .subscribers p {
-    text-align: right;
-}
-
-.theme-name {
-    margin-right: 1em;
-}
-
-.theme-name h2 {
-    padding-top: 0;
-    border-bottom: 1px solid orange;
 }
 
 /* comment  */
@@ -178,6 +167,7 @@ article header .display-theme-for-owner {
 /* comment footer */
 
 .footer {
+    position: relative;
     border-top: 2px solid rgba(0, 128, 128, 0.2);
     display: flex;
     flex-wrap: wrap;
@@ -187,8 +177,8 @@ article header .display-theme-for-owner {
 }
 
 .like-group {
-    display: flex;
-    flex-wrap: wrap;
+    display: inline-flex;
+
     align-items: center;
     gap: 5px;
 }
@@ -266,6 +256,7 @@ footer p {
 }
 
 .answer textarea {
+    resize: none;
     width: 90%;
     margin-top: 1em;
     border-radius: 2px;
@@ -296,10 +287,12 @@ footer p {
 /* errors */
 
 p.error {
-    display: flex;
-    justify-content: center;
+    position: relative;
+    display: inline-flex;
+    text-align: left;
     color: red;
-    padding-top: 0;
+    line-height: 0.9;
+    margin-top: 0.3em;
     font-size: 0.8em;
 }
 
@@ -310,26 +303,28 @@ form .input-error {
 
 @media screen and (max-width: 800px) {
     div.theme-content {
-        min-width: 90%;
+        width: auto;
+        min-width: 380px;
         margin: auto;
         margin-top: 1em;
         padding: .5em;
     }
 
-    article .theme-name p {
+    article header.theme-name {
+        flex-direction: column;
+    }
+
+    article header p {
+        margin-top: 1em;
         font-size: 0.8rem;
+        padding: 1em 0;
     }
 
     article header h2 {
         font-size: 1.3rem;
         text-align: left;
         padding: .5em;
-    }
-
-    article div.subscribers {
-        padding: .5em;
-        text-align: right;
-        flex-basis: 15%;
+        line-height: 1.1;
     }
 
     article.comment {

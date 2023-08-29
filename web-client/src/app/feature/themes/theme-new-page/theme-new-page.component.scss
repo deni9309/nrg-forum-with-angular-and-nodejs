@@ -48,7 +48,7 @@
 }
 
 .new-theme-title {
-    height: 4.4rem;
+    height: 4.5rem;
 }
 
 .new-theme-content {
@@ -121,6 +121,7 @@ p.error {
     display: inline-flex;
     text-align: left;
     color: red;
+    line-height: 0.9;
     margin-top: 0.3em;
     font-size: 0.8em;
 }
@@ -146,7 +147,7 @@ p.error {
 
     div.new-theme-border {
         min-width: auto;
-        width: 350px;
+        width: 370px;
         font-size: 0.8em;
         padding: 2em 1em;
     }

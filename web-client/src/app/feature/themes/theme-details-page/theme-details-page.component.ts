@@ -20,15 +20,6 @@ import { PostService } from 'src/app/core/post.service';
             state('void', style({ opacity: 0 })),
             transition('void => *', [
                 animate(1000)
-            ]),
-        ]),
-        trigger('slide', [
-            transition(':enter', [
-                style({ opacity: 0, transform: 'translateX(-20%)' }),
-                animate('500ms 300ms ease-out', style({ opacity: 1, transform: 'translateX(0%)' }))
-            ]),
-            transition(':leave', [
-                animate('300ms ease-out', style({ opacity: 0, transform: 'translateX(-20%)' }))
             ])
         ])
     ]
