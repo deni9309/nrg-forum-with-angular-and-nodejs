@@ -8,7 +8,7 @@
     flex-direction: column;
     margin: 2em auto;
     min-width: 700px;
-    max-width: 80%;
+    max-width: 70%;
     margin-bottom: 2em;
     padding: 1em 2em;
     background-color: rgba(255, 255, 255, 0.622);
@@ -17,18 +17,15 @@
 /* theme header part */
 
 .theme-name-wrapper {
+    justify-content: center;
+    display: flex;
     position: relative;
     padding: 1em;
+    margin: 0;
     border-radius: 2px;
     margin-top: 1em;
     border: 1px solid gainsboro;
     background-color: whitesmoke;
-}
-
-article .theme-name {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
 }
 
 .theme-details {
@@ -36,20 +33,20 @@ article .theme-name {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: auto;
 }
 
 article header,
 article header p {
-    padding: 1em;
+    padding: 0.5em 1em;
 }
 
 article header h2 {
     font-size: 1.7rem;
     margin-bottom: 0.3em;
     position: relative;
-    padding: 0 1em;
+    padding: 0.5em 1em;
     border-bottom: 1px solid orange;
+    line-height: 1.1;
 }
 
 article header .display-theme-for-owner {
@@ -68,15 +65,15 @@ article header .display-theme-for-owner {
     white-space: pre;
     font-size: 0.9rem;
     color: teal;
+    padding: 0 0.5em;
 }
 
 .subscribers {
-    flex-basis: 50%;
-    display: inline-flex;
+    display: flex;
     border-left: 1px solid orange;
     padding: 1em;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     position: relative;
     column-gap: 0.5em;
 }
@@ -310,7 +307,7 @@ form .input-error {
         padding: .5em;
     }
 
-    article header.theme-name {
+    article.theme-name-wrapper {
         flex-direction: column;
     }
 
@@ -330,6 +327,8 @@ form .input-error {
     article.comment {
         display: flex;
         flex-direction: column;
+        padding-top: 0.2em;
+        padding-bottom: 0.2em;
     }
 
     article.comment div.comment-main * {
@@ -347,8 +346,13 @@ form .input-error {
         height: auto;
     }
 
+    article.comment header{
+        padding: 0;
+    }
+
     footer {
         justify-content: space-between;
+        padding-bottom: 0.7em;
     }
 
     footer div.like-group {

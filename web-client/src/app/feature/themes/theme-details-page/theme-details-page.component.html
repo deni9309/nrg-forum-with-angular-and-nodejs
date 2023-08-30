@@ -5,27 +5,25 @@
          @fade>
 
         <article class="theme-name-wrapper">
-            <header class="theme-name">
-                <div class="theme-details">
-                    <h2>{{theme.themeName}}</h2>
-                    <p *ngIf="isOwner"
-                       class="display-theme-for-owner"><i class="fas fa-star"></i> Created by you</p>
-                    <p>Date: <time>{{theme.created_at | date:'dd MMM yyyy, hh:mm a'}}</time></p>
-                </div>
-                <div class="subscribers">
-                    <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
-                    <ng-container *ngIf="(isLoggedIn$ | async)">
-                        <button (click)="subscribe()"
-                                @fade
-                                *ngIf="canSubscribe"
-                                class="subscribe">Subscribe</button>
-                        <button (click)="unsubscribe()"
-                                @fade
-                                *ngIf="!canSubscribe"
-                                class="unsubscribe">Unsubscribe</button>
-                    </ng-container>
-                </div>
+            <header class="theme-details">
+                <h2>{{theme.themeName}}</h2>
+                <p *ngIf="isOwner"
+                   class="display-theme-for-owner"><i class="fas fa-star"></i> Created by you</p>
+                <p>Date: <time>{{theme.created_at | date:'dd MMM yyyy, hh:mm a'}}</time></p>
             </header>
+            <div class="subscribers">
+                <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
+                <ng-container *ngIf="(isLoggedIn$ | async)">
+                    <button (click)="subscribe()"
+                            @fade
+                            *ngIf="canSubscribe"
+                            class="subscribe">Subscribe</button>
+                    <button (click)="unsubscribe()"
+                            @fade
+                            *ngIf="!canSubscribe"
+                            class="unsubscribe">Unsubscribe</button>
+                </ng-container>
+            </div>
         </article>
 
         <article class="comment"
