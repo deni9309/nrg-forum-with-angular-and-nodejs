@@ -12,6 +12,7 @@ import { ThemeDetailsPageComponent } from './theme-details-page/theme-details-pa
 import { ThemeNewPageComponent } from './theme-new-page/theme-new-page.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PostEditComponent } from './post-edit/post-edit.component';
 
 
 
@@ -24,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         ThemesPageComponent,
         ThemeDetailsPageComponent,
         ThemeNewPageComponent,
+        PostEditComponent,
   ],
   imports: [
       CommonModule,

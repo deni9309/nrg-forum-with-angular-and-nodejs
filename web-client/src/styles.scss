@@ -6,7 +6,7 @@
 
 html,
 * {
-    transition: all ease-in 0.2s;
+    transition: all linear 0.2s;
     font-family: 'Poiret One', cursive;
     font-weight: bold;
 }
@@ -85,4 +85,33 @@ ul.breadcrumb li+li:before {
 
 ul.breadcrumb li a {
     color: teal;
+}
+
+/* ---------- tooltip ----------------*/
+.tooltiptext {
+    visibility: hidden;
+    width: fit-content;
+    background-color: rgb(220, 220, 220);
+    color: gray;
+    text-align: center;
+    border-radius: 2px;
+    padding: .3em;
+    position: absolute;
+    font-size: .7rem;
+    z-index: 1;
+    bottom: 80%;
+    left: 50%;
+    opacity: 0;
+    transition: opacity .8s;
+}
+
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-top: -8px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(220, 220, 220, 0.834);
 }

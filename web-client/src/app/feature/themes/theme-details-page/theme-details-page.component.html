@@ -62,6 +62,10 @@
                                   (click)="like(post)">Like this</span>
                         </div>
                     </ng-container>
+
+                    <ng-container *ngIf="canEditPost(post)">
+                        <a [routerLink]="['/themes', theme._id, 'posts', post._id]"><i class="fas fa-edit"></i> Edit</a>
+                    </ng-container>
                 </ng-container>
                 <p><span>{{post.likes.length}}</span> likes</p>
             </footer>

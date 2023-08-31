@@ -1,0 +1,154 @@
+:host {
+    margin: auto;
+}
+
+/* new-post */
+
+.new-post-border {
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: 2em auto;
+    margin-bottom: 2em;
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.219);
+    border: 0;
+    padding: 4em;
+    background-color: rgba(255, 255, 255, 0.718);
+}
+
+.new-post-border .input {
+    margin-bottom: 1em;
+}
+
+.header-background {
+    background-color: #007f99;
+    border-bottom: 4px solid orange;
+    padding: 1.5em;
+    padding-bottom: 0;
+    margin-bottom: 1em;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+}
+
+.header-background span {
+    background-color: #fff;
+    padding: 0.5em;
+    margin-top: 1em;
+    margin-bottom: 0;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+}
+
+.new-post-title,
+.new-post-content {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+.new-post-title {
+    height: 4.5rem;
+}
+
+.new-post-content {
+    position: relative;
+    height: 12rem;
+    width: 100%;
+}
+
+.new-post-content textarea {
+    position: relative;
+    height: 9rem;
+    resize: none;
+    padding: 0.5em;
+    border-left: 0.3em solid green;
+}
+
+.new-post-title input {
+    display: flex;
+    width: 100%;
+    border-radius: 2px;
+    padding: 0.3em;
+    border-left: 0.3em solid green;
+}
+
+/* buttons */
+
+button+button {
+    margin-left: 1rem;
+}
+
+.new-post-buttons {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.new-post-buttons button {
+    border: none;
+    border-radius: 2px;
+    padding: 0.4em 1.2em;
+    margin-top: 1rem;
+    margin-bottom: .9rem;
+}
+
+.new-post-buttons button:disabled {
+    color: rgb(245, 245, 245);
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.green-button {
+    background-color: rgba(2, 157, 2, 0.6);
+}
+
+.red-button {
+    background-color: rgba(255, 0, 0, 0.7);
+}
+
+.red-button:hover {
+    background-color: rgba(195, 0, 0, 0.7);
+}
+
+.green-button:hover {
+    background-color: rgba(0, 102, 0, 0.6);
+}
+
+/* errors */
+
+p.error {
+    position: relative;
+    display: inline-flex;
+    text-align: left;
+    color: red;
+    line-height: 0.9;
+    margin-top: 0.3em;
+    font-size: 0.8em;
+}
+
+.red {
+    color: rgba(255, 0, 0, 0.7);
+}
+
+.new-post-title .input-error,
+.new-post-content textarea.input-error {
+    border: 1px solid rgba(255, 0, 0, 0.9);
+    border-left: 0.3em solid rgba(255, 0, 0, 0.9);
+}
+
+@media screen and (max-width: 800px) {
+    .new-post-border .header-background {
+        padding: inherit 0 0 0;
+    }
+
+    .new-post-border .header-background span {
+        margin: inherit 0 0 0;
+    }
+
+    div.new-post-border {
+        min-width: auto;
+        width: 370px;
+        font-size: 0.8em;
+        padding: 2em 1em;
+    }
+}

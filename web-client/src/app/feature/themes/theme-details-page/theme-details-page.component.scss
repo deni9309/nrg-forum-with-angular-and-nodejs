@@ -173,11 +173,27 @@ article header .display-theme-for-owner {
     color: rgb(0, 128, 182);
 }
 
+footer p {
+    background-color: rgba(0, 128, 128, 0.2);
+    color: rgb(0, 0, 0);
+    padding: 1em;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
 .like-group {
     display: inline-flex;
-
     align-items: center;
     gap: 5px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: teal;
+}
+
+.footer a:hover {
+    color: orange;
 }
 
 .footer span {
@@ -213,14 +229,6 @@ span.like:hover {
     color: hotpink;
     font-size: 1rem;
     border: none;
-}
-
-footer p {
-    background-color: rgba(0, 128, 128, 0.2);
-    color: rgb(0, 0, 0);
-    padding: 1em;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
 }
 
 /* create comment */
@@ -346,7 +354,7 @@ form .input-error {
         height: auto;
     }
 
-    article.comment header{
+    article.comment header {
         padding: 0;
     }
 

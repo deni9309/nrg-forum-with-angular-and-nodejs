@@ -20,11 +20,19 @@ export class PostService {
         );
     }
 
+    loadPostById$(postId: string): Observable<IPost> {
+        return this.http.get<IPost>(`${apiUrl}/posts/${postId}`);
+    }
+
     likePost$(postId: string): Observable<void> {
         return this.http.put<void>(`${apiUrl}/likes/${postId}`, {}, { withCredentials: true });
     }
 
     removePostLike$(postId: string): Observable<void> {
         return this.http.put<void>(`${apiUrl}/dislikes/${postId}`, {}, { withCredentials: true });
+    }
+
+    editPost$(themeId: string, postId: string, postText: string): Observable<IPost> {
+        return this.http.put<IPost>(`${apiUrl}/themes/${themeId}/posts/${postId}`, { postText }, { withCredentials: true });
     }
 }

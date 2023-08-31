@@ -36,3 +36,8 @@ table tfoot td {
 table tbody tr:nth-child(even) td {
     background: #CCC;
 }
+
+a {
+    text-decoration: none;
+    font-family: inherit;
+}

@@ -85,11 +85,17 @@ form div.field-group#first {
 
 .login a {
     color: teal;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
-.login a:hover {
-    cursor: pointer;
-}
+/*
+// .login a:hover {
+//     cursor: pointer;
+// }
+*/
 
 .login .field {
     display: flex;
@@ -127,4 +133,3 @@ p.error {
         min-width: 380px;
     }
 }
-

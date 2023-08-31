@@ -132,6 +132,10 @@ export class ThemeDetailsPageComponent implements OnInit {
         });
     }
 
+    canEditPost(post: IPost) {
+        return this.currentUser && this.currentUser?._id === post.userId._id;
+    }
+
     postTrackBy(index: number, post: IPost) {
         return post._id;
     }

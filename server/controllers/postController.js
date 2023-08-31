@@ -18,6 +18,14 @@ function newPost(text, userId, themeId) {
         });
 }
 
+function getPostById(req, res, next) {
+    postModel.findById(req.params['postId']).populate('themeId userId')
+        .then(post => {
+            res.status(200).json(post);
+        })
+        .catch(next);
+}
+
 function getLatestsPosts(req, res, next) {
     const limit = Number(req.query.limit) || 0;
 
@@ -26,7 +34,7 @@ function getLatestsPosts(req, res, next) {
         .limit(limit)
         .populate('themeId userId')
         .then(posts => {
-            res.status(200).json(posts)
+            res.status(200).json(posts);
         })
         .catch(next);
 }
@@ -49,13 +57,17 @@ function editPost(req, res, next) {
     const { _id: userId } = req.user;
 
     // if the userId is not the same as this one of the post, the post will not be updated
-    postModel.findOneAndUpdate({ _id: postId, userId }, { text: postText }, { new: true })
+    postModel.findOneAndUpdate(
+        { _id: postId, userId },
+        { text: postText },
+        { upsert: true, populate: 'themeId userId', new: true }
+    )
         .then(updatedPost => {
             if (updatedPost) {
                 res.status(200).json(updatedPost);
             }
             else {
-                res.status(401).json({ message: `Not allowed!` });
+                res.status(401).json({ message: `Action is not allowed! A post can be modified only by its owner.` });
             }
         })
         .catch(next);
@@ -100,6 +112,7 @@ function dislike(req, res, next) {
 
 module.exports = {
     getLatestsPosts,
+    getPostById,
     newPost,
     createPost,
     editPost,
