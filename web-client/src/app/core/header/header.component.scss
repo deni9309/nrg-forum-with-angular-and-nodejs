@@ -39,6 +39,10 @@ header ul span {
     padding: 0.5em;
 }
 
+header .active {
+    background-color: orange;
+}
+
 .mini-navbar ul {
     padding-left: 0;
     width: 100%;
@@ -84,7 +88,7 @@ nav {
 
 .mini-navbar li {
     background-color: #007f99;
-    padding: .2em .8em;
+    padding: .2em;
 }
 
 .mini-navbar li:hover {
@@ -112,11 +116,12 @@ nav {
 }
 
 @media screen and (max-width: 800px) {
-  header li,
-  .mini-navbar li {
-    padding: 0.2em;
-  }
-  
+
+    header li,
+    .mini-navbar li {
+        padding: 0.2em;
+    }
+
     header nav {
         display: flex;
         justify-content: center;

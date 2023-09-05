@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { animate, query, stagger, state, style, transition, trigger } from '@angular/animations';
+import { animate, query, stagger, state, style, transition, trigger, useAnimation } from '@angular/animations';
 
 import { emailValidator } from '../validators/emailValidator';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants/validation-constants';
 import { AuthService } from 'src/app/auth.service';
 import { MessageBusService } from 'src/app/core/message-bus.service';
 import { MessageType } from 'src/app/shared/constants/messageType';
+import { slideInX, slideOutX } from 'src/app/shared/animations/slide-x.animation';
 
 @Component({
     selector: 'app-login',
@@ -22,13 +23,9 @@ import { MessageType } from 'src/app/shared/constants/messageType';
         ]),
 
         trigger('slide', [
-            transition(':enter', [
-                style({ opacity: 0, transform: 'translateX(10%)' }),
-                animate('700ms 900ms ease-out', style({ opacity: 1, transform: 'none' }))
-            ]),
-            transition(':leave', [
-                animate('700ms ease', style({ opacity: 0, transform: 'translateX(10%)' }))
-            ])
+            state('void', style({ opacity: 0 })),
+            transition(':enter', useAnimation(slideInX)),
+            transition(':leave', useAnimation(slideOutX))
         ])
     ]
 })

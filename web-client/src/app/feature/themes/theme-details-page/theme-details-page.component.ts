@@ -1,15 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger, useAnimation } from '@angular/animations';
 import { BehaviorSubject, Observable, combineLatest, mergeMap } from 'rxjs';
 
 import { IPost, ITheme, IUser } from 'src/app/core/interfaces';
 import { ThemeService } from '../../../core/theme.service';
 import { AuthService } from 'src/app/auth.service';
 import { MessageBusService } from 'src/app/core/message-bus.service';
-import { MessageType } from 'src/app/shared/constants/messageType';
+import { MessageType } from 'src/app/shared/constants';
 import { PostService } from 'src/app/core/post.service';
+import { bounceIn, slideInX, slideOutX } from 'src/app/shared/animations';
 
 @Component({
     selector: 'app-theme-details-page',
@@ -21,6 +22,16 @@ import { PostService } from 'src/app/core/post.service';
             transition('void => *', [
                 animate(1000)
             ])
+        ]),
+        trigger('bounce', [
+            transition('void => *', useAnimation(bounceIn, {
+                params: { timing: 0.9 },
+            })),
+        ]),
+        trigger('slide', [
+            state('void', style({opacity:0})),
+            transition(':enter', useAnimation(slideInX)),
+            transition(':leave', useAnimation(slideOutX)),
         ])
     ]
 })

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input'
 
 import { AsideComponent } from './aside/aside.component';
 import { PostListComponent } from './post-list/post-list.component';
@@ -10,11 +12,7 @@ import { ThemesRoutingModule } from './themes-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ThemeDetailsPageComponent } from './theme-details-page/theme-details-page.component';
 import { ThemeNewPageComponent } from './theme-new-page/theme-new-page.component';
-import { CoreModule } from 'src/app/core/core.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostEditComponent } from './post-edit/post-edit.component';
-
-
 
 @NgModule({
     declarations: [
@@ -26,15 +24,16 @@ import { PostEditComponent } from './post-edit/post-edit.component';
         ThemeDetailsPageComponent,
         ThemeNewPageComponent,
         PostEditComponent,
-  ],
-  imports: [
-      CommonModule,
-      ThemesRoutingModule,
-      SharedModule,
-      FormsModule,
-      ReactiveFormsModule,
+    ],
+    imports: [
+        CommonModule,
+        ThemesRoutingModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule
     ],
     exports: [
-  ]
+    ]
 })
 export class ThemesModule { }

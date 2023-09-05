@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger, useAnimation } from '@angular/animations';
 
 import { DEFAULT_EMAIL_DOMAINS } from '../../shared/constants/validation-constants';
 import { IUser } from 'src/app/core/interfaces';
 import { UserService } from 'src/app/core/user.service';
+import { slideInX, slideOutX } from 'src/app/shared/animations/slide-x.animation';
 
 @Component({
     selector: 'app-profile',
@@ -14,20 +15,17 @@ import { UserService } from 'src/app/core/user.service';
     animations: [
         trigger('fade', [
             state('void', style({ opacity: 0 })),
-            transition('void => *', [
-                animate(1000)
-            ])
+            transition('void => *', [ animate(1000) ])
         ]),
-
         trigger('slide', [
-            transition(':enter', [
-                style({ opacity: 0, transform: 'translateX(10%)' }),
-                animate('700ms 900ms ease-out', style({ opacity: 1, transform: 'none' }))
-            ]),
-            transition(':leave', [
-                animate('600ms ease', style({ opacity: 0, transform: 'translateX(10%)' }))
-            ])
-        ])
+            state('void', style({ opacity: 0 })),
+            transition('void => *', useAnimation(slideInX, {
+                params: { timing: 0.7 }
+            })),
+            transition('* => void', useAnimation(slideOutX, {
+                params: { timing: 0.6 }
+            }))
+        ]),
     ]
 })
 export class ProfileComponent implements OnInit {

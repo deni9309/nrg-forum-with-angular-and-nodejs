@@ -1,12 +1,14 @@
 <div class="container">
     <div *ngIf="postList">
-        <div *ngFor="let post of postList; trackBy: postListTrackBy"
-             class="aside-theme">
-            <a [routerLink]="['/themes', post.themeId._id]" title="Read More">
-                <h3>{{post.themeId.themeName}}</h3>
-                <p>{{(post.text | slice:0:100) + '...'}}</p>
-                <p class="time-span"><span>{{post.created_at | timeSpan}}</span></p>
+        <div *ngFor="let post of postList; even as isEven; trackBy: postListTrackBy"
+             class="aside-theme"
+             [class.stripe-odd]="isEven"
+             [class.stripe-even]="!isEven">
+            <a [routerLink]="['/themes', post.themeId._id]">
+                <h3>{{post.themeId.themeName}} <span class="tooltiptext">Read More</span></h3>
             </a>
+            <p>{{(post.text | slice:0:100) + '...'}}</p>
+            <p class="time-span"><span>{{post.created_at | timeSpan}}</span></p>
         </div>
         <div *ngIf="postList.length === 0">No Posts!</div>
     </div>

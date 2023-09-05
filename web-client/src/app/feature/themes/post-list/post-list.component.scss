@@ -1,42 +1,24 @@
-@keyframes fade {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
 /* post aside  */
-
-aside {
-    width: 29%;
-    margin-top: 1em;
-    font-size: 0.8em;
-}
-
-.aside * {
-    margin: 0;
-    padding: 0;
-}
-
-.title {
-    font-size: 1.5em;
-}
-
 .aside-theme {
     position: relative;
-    margin: 1rem 0;
+    margin: 0;
     padding: 0.5rem 1em;
-    animation-name: fade;
-    animation-duration: 1s;
+}
+
+.stripe-even {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.stripe-odd {
+    background-color:rgba(0, 0, 0, 0.25);
 }
 
 h3 {
-    border-radius: 2px;
+    color: white;
+    text-align: center;
+    line-height: 1.2;
     font-size: 1.2rem;
-    background-color: rgba(245, 245, 245, 0.5);
+    border-bottom: 2px solid teal;
     padding: 0.5rem;
 }
 
@@ -44,23 +26,83 @@ h3 {
     border-top: dashed 1px teal;
 }
 
-.aside-theme p {
-    text-align: right;
-    padding: 1em;
+/*----------- tooltip -----------*/
+.tooltiptext {
+    visibility: hidden;
+    width: fit-content;
+    background-color: white;
+    color: gray;
+    text-align: center;
+    border-radius: 2px;
+    padding: .3em;
+    position: absolute;
+    font-size: .7rem;
+    z-index: 1;
+    top: -5%;
+    left: 40%;
+    opacity: 0;
+    transition: opacity .8s;
 }
+
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-top: -8px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent white;
+}
+
+a .tooltiptext {
+    visibility: visible;
+    opacity: 0;
+}
+
+a:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ----------- end of tooltip -----------*/
 
 .aside-theme a {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
+    background-color: white;
+}
+
+.aside-theme p {
+    text-align: right;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
 }
 
 .aside-theme a:hover h3 {
     color: orange;
 }
 
-p.time-span {
-    margin-top: .3em;
+.aside-theme p.time-span {
+    margin-top: .1em;
     margin-bottom: .3em;
+    background-color: rgba(220, 220, 220, 0.85);
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
     color: teal;
+}
+
+@media screen and (max-width: 800px) {
+    .aside-theme h3 {
+        font-size: 1.1rem;
+    }
+
+    .aside-theme p {
+        padding: 0;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        font-size: .8rem;
+    }
 }

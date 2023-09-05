@@ -20,11 +20,17 @@ import { MessageType } from 'src/app/shared/constants/messageType';
             transition('void => *', [
                 animate(1000)
             ]),
-            
+
             transition('* => void', [
                 animate(400)
             ])
-        ])
+        ]),
+
+        trigger('navOptionsBackground', [
+            state('DEFAULT', style('*')),
+            state('ACTIVE', style({ backgroundColor: 'orange' })),
+            transition('* => *', animate('300ms ease-in-out')),
+        ]),
     ]
 })
 export class HeaderComponent implements OnInit, OnDestroy {

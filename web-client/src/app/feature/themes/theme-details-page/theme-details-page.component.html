@@ -15,11 +15,11 @@
                 <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
                 <ng-container *ngIf="(isLoggedIn$ | async)">
                     <button (click)="subscribe()"
-                            @fade
+                            @bounce
                             *ngIf="canSubscribe"
                             class="subscribe">Subscribe</button>
                     <button (click)="unsubscribe()"
-                            @fade
+                            @bounce
                             *ngIf="!canSubscribe"
                             class="unsubscribe">Unsubscribe</button>
                 </ng-container>
@@ -48,7 +48,7 @@
                 <ng-container *ngIf="(isLoggedIn$ | async)">
                     <ng-container *ngIf="!canLikeThemePost(post)">
                         <div class="like-group"
-                             @fade>
+                             @bounce>
                             <span class="liked-info">You already <i class="fas fa-heart"></i> this.</span>
                             <span class="dislike"
                                   (click)="dislike(post)">Remove like</span>
@@ -57,7 +57,7 @@
 
                     <ng-container *ngIf="canLikeThemePost(post)">
                         <div class="like-group"
-                             @fade>
+                             @bounce>
                             <span class="like"
                                   (click)="like(post)">Like this</span>
                         </div>
@@ -84,7 +84,6 @@
                               name="postText"
                               id="postText"
                               cols="30"
-                              rows="10"
                               ngModel
                               #postText="ngModel"
                               required
@@ -92,10 +91,10 @@
                     </textarea>
                     <ng-container *ngIf="postText.touched && postText.invalid">
                         <p class="error"
-                           @fade
+                           @slide
                            *ngIf="postText.errors?.['required']">Your post must have content!</p>
                         <p class="error"
-                           @fade
+                           @slide
                            *ngIf="postText.errors?.['minlength']">Post content must be at least 3
                             characters long!
                         </p>

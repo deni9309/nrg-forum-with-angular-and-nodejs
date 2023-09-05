@@ -6,15 +6,15 @@ import { Router } from '@angular/router';
 import { ThemeService } from 'src/app/core/theme.service';
 
 @Component({
-  selector: 'app-theme-new-page',
-  templateUrl: './theme-new-page.component.html',
+    selector: 'app-theme-new-page',
+    templateUrl: './theme-new-page.component.html',
     styleUrls: [ './theme-new-page.component.scss' ],
     animations: [
         trigger('fade', [
             state('void', style({ opacity: 0 })),
-            transition('void => *', [      
+            transition('void => *', [
                 animate(900)
-            ]),       
+            ]),
         ]),
         trigger('slide', [
             transition(':enter', [
@@ -30,7 +30,7 @@ import { ThemeService } from 'src/app/core/theme.service';
 export class ThemeNewPageComponent {
     errorMessage: string = '';
 
-    constructor(private themeService:ThemeService, private router: Router) { }
+    constructor(private themeService: ThemeService, private router: Router) { }
 
     submitNewThemeHandler(form: NgForm) {
         if (form.invalid) { return; }

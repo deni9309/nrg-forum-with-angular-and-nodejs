@@ -1,27 +1,14 @@
-/* main  */
-
-main {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-}
-
 aside {
     display: flex;
-    margin-top: 1em;
-    font-size: 0.8em;
+    margin-top: 1rem;
 }
 
-.aside * {
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    flex-wrap: wrap;
-    margin: auto;
-    padding-bottom: 4.5em;
+h2 {
+    color: #555;
+    border-color: teal;
+    background-color: #55555530;
+    justify-content: center;
+    align-items: center;
+    padding-top: .5rem;
     display: flex;
-    align-items: flex-start;
-    justify-content: space-evenly;
 }

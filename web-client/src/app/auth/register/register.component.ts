@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger, useAnimation } from '@angular/animations';
 
 import { emailValidator } from '../validators/emailValidator';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants/validation-constants';
 import { matchPasswordsValidator } from '../validators/matchPasswordsValidator';
 import { CreateUserDto } from 'src/app/core/interfaces';
 import { AuthService } from 'src/app/auth.service';
+import { slideInX, slideOutX } from 'src/app/shared/animations/slide-x.animation';
 
 @Component({
     selector: 'app-register',
@@ -21,14 +22,10 @@ import { AuthService } from 'src/app/auth.service';
             ]),
         ]),
         trigger('slide', [
-            transition(':enter', [
-                style({ opacity: 0, transform: 'translateX(10%)' }),
-                animate('700ms 900ms ease-out', style({ opacity: 1, transform: 'none' }))
-            ]),
-            transition(':leave', [
-                animate('700ms ease', style({ opacity: 0, transform: 'translateX(10%)' }))
-            ])
-        ])
+            state('void', style({ opacity: 0, transform:'translateX(-10%)' })),
+            transition(':enter', useAnimation(slideInX)),
+            transition(':leave', useAnimation(slideOutX))
+        ]),
     ]
 })
 export class RegisterComponent {
